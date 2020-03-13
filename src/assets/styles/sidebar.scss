@@ -1,0 +1,39 @@
+.dashboard-sidebar {
+  position: static;
+  height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.ant-layout-sider-children {
+  background-color: #30572d;
+}
+
+.ant-menu-dark.ant-menu-inline {
+  background-color: #30572d;
+}
+
+.ant-menu.ant-menu-dark .ant-menu-item-selected {
+  background-color: #64b15d;
+}
+
+.logo {
+  height: 9%;
+  margin: 16px;
+  img {
+    max-width: 60%;
+    max-height: 100%;
+    margin-left: 20%;
+  }
+}
+
+.ant-btn-group {
+  display: inline-flex;
+  float: right;
+  margin-left: 2%;
+}
+
+.ant-input-affix-wrapper {
+  float: right;
+}
