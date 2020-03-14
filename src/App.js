@@ -1,17 +1,28 @@
 import React from "react";
+import { Route } from "react-router-dom";
 import "./App.css";
 import Users from "./components/users";
-import Sidebar from "./components/layout/sidebar";
-import TopNav from "./components/layout/topNav";
-import Content from "./components/dashboardHome";
+import Layout from "./components/layout";
+import Home from "./components/dashboardHome";
+import Branches from "./components/branches";
+import Transactions from "./components/transactions";
 
 const App = () => {
   return (
     <div>
-      {/* <Users /> */}
-      <Content />
-      <TopNav />
-      <Sidebar />
+      <Route>
+        <Layout>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+          <Route path="/branches" exact>
+            <Branches />
+          </Route>
+          <Route path="/transactions" exact>
+            <Transactions />
+          </Route>
+        </Layout>
+      </Route>
     </div>
   );
 };
