@@ -1,6 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import Layout from "../components/layout";
+import Layout from "../components/layout/layoutDasboard";
 import Home from "../components/dashboard/home";
 import Branches from "../components/dashboard/branches";
 import Transactions from "../components/dashboard/transactions";
