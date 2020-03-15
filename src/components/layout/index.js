@@ -9,7 +9,7 @@ import {
   BankOutlined,
   LogoutOutlined
 } from "@ant-design/icons";
-import "../../assets/styles/layout.scss";
+import "../../assets/styles/dashboard/layout.scss";
 import Bangsam from "../../assets/icons/logo-items/bangsam_white.png";
 
 const { Header, Content, Footer, Sider } = Layout;
