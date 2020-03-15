@@ -3,12 +3,16 @@
   width: 100vw;
   display: flex;
   justify-content: center;
-  // background-image: url(../icons/bangsam_user2.png);
-  // background-size: cover;
+  background-image: url(../icons/poster7.jpg);
+  background-size: cover;
   background-color: rgba(176, 179, 175, 0.288);
   img {
     width: 35%;
     margin-bottom: 9%;
+    margin-left: 30%;
+  }
+  &__text {
+    margin-bottom: 5%;
   }
 }
 
@@ -17,21 +21,54 @@
   font-size: 16px;
 }
 
+.ant-form label {
+  float: left;
+}
+
 .login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   max-width: 25vw;
-  max-height: 600px;
   border: 2px white;
   border-radius: 20px;
   padding: 3%;
   margin-top: 10%;
-  background-color: white;
+  margin-bottom: 10%;
+  background-color: rgba(255, 255, 255, 0.705);
   box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.1), 0 4px 4px 0 rgba(0, 0, 0, 0.15);
 }
+
+.ant-input-affix-wrapper {
+  background-color: rgba(255, 255, 255, 0.705);
+}
+
 .login-form-forgot {
   float: right;
+  color: #457c3b;
 }
 .login-form-button {
   width: 100%;
+  margin-bottom: 5%;
+}
+
+.ant-btn-primary {
+  background-color: #457c3bde;
+  border-color: #457c3bde;
+}
+
+.ant-btn-primary:hover {
+  background-color: #64b15d;
+  border-color: #64b15d;
+  color: white;
+}
+
+a {
+  color: #457c3b;
+}
+
+a:hover {
+  color: #64b15d;
 }
 
 h1.ant-typography {
