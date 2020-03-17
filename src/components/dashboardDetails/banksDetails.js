@@ -16,21 +16,21 @@ const menu = (
   </Menu>
 );
 
-const CustomerDetails = () => {
+const BanksDetails = () => {
   return (
     <div>
       <Descriptions
         size="small"
-        title="Customer Details"
+        title="Branch Details"
         layout="vertical"
         bordered
       >
         <Descriptions.Item label="Name">Jason Stingify</Descriptions.Item>
-        <Descriptions.Item label="Email">jason@mail.com</Descriptions.Item>
-        <Descriptions.Item label="Phone Number">08120987654</Descriptions.Item>
-        <Descriptions.Item label="Deposit">$80.00</Descriptions.Item>
-        <Descriptions.Item label="Waste (kg) ">$20.00</Descriptions.Item>
-        <Descriptions.Item label="Waste (Rp)">$60.00</Descriptions.Item>
+        <Descriptions.Item label="Phone Number">
+          jason@mail.com
+        </Descriptions.Item>
+        <Descriptions.Item label="Address">08120987654</Descriptions.Item>
+        <Descriptions.Item label="Balance">$80.00</Descriptions.Item>
         <Descriptions.Item label="Created at">
           2018-04-24 18:00:00
         </Descriptions.Item>
@@ -43,18 +43,8 @@ const CustomerDetails = () => {
           </Dropdown>
         </Descriptions.Item>
       </Descriptions>
-      <br></br>
-      <Descriptions size="small" title="Address" layout="vertical" bordered>
-        <Descriptions.Item label="Default Address">
-          ajksndfaj asdnfjkas
-        </Descriptions.Item>
-        <Descriptions.Item label="Work Address">
-          snfdjkasjasdn
-        </Descriptions.Item>
-        <Descriptions.Item label="Other Address">adskfjasdf</Descriptions.Item>
-      </Descriptions>
     </div>
   );
 };
 
-export default CustomerDetails;
+export default BanksDetails;

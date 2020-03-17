@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Table, Button, Menu, Dropdown } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import "../../assets/styles/dashboard/dashboardDetails.scss";
@@ -38,9 +39,15 @@ const dropdown = (
   </Menu>
 );
 
-const Branches = () => {
+const Banks = () => {
   let [filtered, setFiltered] = useState(null);
   let [sorted, setSorted] = useState(null);
+
+  const history = useHistory();
+
+  const details = () => {
+    history.push("/dashboard/banks/details");
+  };
 
   const handleChange = (pagination, filters, sorter) => {
     console.log("Various parameters", pagination, filters, sorter);
@@ -154,4 +161,4 @@ const Branches = () => {
   );
 };
 
-export default Branches;
+export default Banks;

@@ -30,7 +30,7 @@ const menu = (
   </Menu>
 );
 
-const dashboard = props => {
+const DashboardLayout = props => {
   return (
     <Layout className="dashboard">
       <Sider
@@ -44,36 +44,36 @@ const dashboard = props => {
         }}
       >
         <div className="logo">
-          <img src={Bangsam} alt="Bangsam"></img>
+          <img className="logo__bangsam" src={Bangsam} alt="Bangsam"></img>
         </div>
         <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
           <Menu.Item key="1">
             <HomeOutlined />
-            <Link to={"/"}>
+            <Link to={"/dashboard"}>
               <span className="nav-text">Home</span>
             </Link>
           </Menu.Item>
           <Menu.Item key="2">
             <DollarCircleOutlined />
-            <Link to={"/transactions"}>
+            <Link to={"/dashboard/transactions"}>
               <span className="nav-text">Transactions</span>
             </Link>
           </Menu.Item>
           <Menu.Item key="3">
             <BankOutlined />
-            <Link to={"/branches"}>
-              <span className="nav-text">Branches</span>
+            <Link to={"/dashboard/banks"}>
+              <span className="nav-text">Banks</span>
             </Link>
           </Menu.Item>
           <Menu.Item key="4">
             <UserOutlined />
-            <Link to={"/customers"}>
+            <Link to={"/dashboard/customers"}>
               <span className="nav-text">Customers</span>
             </Link>
           </Menu.Item>
           <Menu.Item key="5">
             <CarFilled />
-            <Link to={"/pickup-requests"}>
+            <Link to={"/dashboard/pickup-requests"}>
               <span className="nav-text">Pick-up Request</span>
             </Link>
           </Menu.Item>
@@ -104,4 +104,4 @@ const dashboard = props => {
   );
 };
 
-export default dashboard;
+export default DashboardLayout;

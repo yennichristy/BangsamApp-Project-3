@@ -1,14 +1,28 @@
 import React from "react";
-import { Form, Input, Button, Checkbox, Typography } from "antd";
-import { MailOutlined, UserOutlined, LockOutlined } from "@ant-design/icons";
+import { Form, Input, Button, Typography } from "antd";
+import {
+  MailOutlined,
+  UserOutlined,
+  LockOutlined,
+  PhoneOutlined
+} from "@ant-design/icons";
 import Logo from "../../assets/icons/logo-items/bangsam.png";
 import "../../assets/styles/users.scss";
+import { useDispatch } from "react-redux";
+import { register } from "../../store/actions/registerAction";
+import { useHistory } from "react-router-dom";
 
 const { Title } = Typography;
 
-const SignUp = () => {
+const Register = () => {
+  //connect dari reducer
+  const dispatch = useDispatch();
+
+  const history = useHistory();
+
   const onFinish = values => {
     console.log("Received values of form: ", values);
+    dispatch(register(values));
   };
 
   return (
@@ -25,7 +39,7 @@ const SignUp = () => {
         <Title>WELCOME!</Title>
         <p className="users__text">Create your account</p>
         <Form.Item
-          name="name"
+          name="first_name"
           rules={[
             {
               required: true,
@@ -53,6 +67,20 @@ const SignUp = () => {
           />
         </Form.Item>
         <Form.Item
+          name="phone_number"
+          rules={[
+            {
+              required: true,
+              message: "Please input your phone number!"
+            }
+          ]}
+        >
+          <Input
+            prefix={<PhoneOutlined className="site-form-item-icon" />}
+            placeholder="Phone"
+          />
+        </Form.Item>
+        <Form.Item
           name="password"
           rules={[
             {
@@ -68,7 +96,7 @@ const SignUp = () => {
           />
         </Form.Item>
         <Form.Item
-          name="confirm"
+          name="password_confirmation"
           dependencies={["password"]}
           rules={[
             {
@@ -101,11 +129,11 @@ const SignUp = () => {
           >
             Sign up
           </Button>
-          Don't have any account? <a href="">Sign in now!</a>
+          Don't have any account? <a href="/signin">Sign in now!</a>
         </Form.Item>
       </Form>
     </div>
   );
 };
 
-export default SignUp;
+export default Register;

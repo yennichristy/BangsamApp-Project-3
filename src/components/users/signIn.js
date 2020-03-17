@@ -71,7 +71,7 @@ const Users = () => {
           >
             Sign in
           </Button>
-          Don't have any account? <a href="">Sign up now!</a>
+          Don't have any account? <a href="/signup">Sign up now!</a>
         </Form.Item>
       </Form>
     </div>
