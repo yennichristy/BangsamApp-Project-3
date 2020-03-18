@@ -5,23 +5,23 @@ import SignIn from "../components/users/signIn";
 import SignUp from "../components/users/register";
 import DashboardLayout from "../components/layout/layoutDasboard";
 import Home from "../components/dashboard/home";
-import Banks from "../components/dashboard/banks";
+import Branches from "../components/dashboard/branches";
 import Transactions from "../components/dashboard/transactions";
 import Customers from "../components/dashboard/customers";
 import Pickup from "../components/dashboard/pick-up";
-import BanksDetails from "../components/dashboardDetails/banksDetails";
+import BranchesDetails from "../components/dashboardDetails/branchesDetails";
 import CustomersDetails from "../components/dashboardDetails/customersDetails";
 import TransactionsDetails from "../components/dashboardDetails/transactionsDetails";
 
 const DashboardRoutes = () => {
-  const login = false;
+  const login = true;
 
   if (login) {
     return (
       <div>
         <DashboardLayout>
           <Route path="/dashboard" exact component={Home} />
-          <Route path="/dashboard/banks" exact component={Banks} />
+          <Route path="/dashboard/banks" exact component={Branches} />
           <Route
             path="/dashboard/transactions"
             exact
@@ -30,9 +30,9 @@ const DashboardRoutes = () => {
           <Route path="/dashboard/customers" exact component={Customers} />
           <Route path="/dashboard/pickup-requests" exact component={Pickup} />
           <Route
-            path="/dashboard/banks/details"
+            path="/dashboard/banks/details/:id"
             exact
-            component={BanksDetails}
+            component={BranchesDetails}
           />
           <Route
             path="/dashboard/customers/details"

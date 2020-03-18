@@ -1,0 +1,184 @@
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { Table, Button, Menu, Dropdown } from "antd";
+import { DownOutlined } from "@ant-design/icons";
+import "../../assets/styles/dashboard/dashboardDetails.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllBranches } from "../../store/actions/branchesAction";
+import moment from "moment";
+
+const Branches = () => {
+  //variable for dropdown
+  const dropdown = (
+    <Menu>
+      <Menu.Item>All Branches</Menu.Item>
+      <Menu.Item>Active Branches</Menu.Item>
+      <Menu.Item>Suspended Branches</Menu.Item>
+    </Menu>
+  );
+
+  //variable for data filtering
+  let [filtered, setFiltered] = useState(null);
+
+  const clearFilters = () => {
+    setFiltered({ filtered: null });
+  };
+
+  filtered = filtered || {};
+
+  //variable for data sorting
+  let [sorted, setSorted] = useState(null);
+
+  sorted = sorted || {};
+
+  //connect Redux to component
+  const dispatch = useDispatch();
+  const branchesData = useSelector(state => state.branches.branches);
+  const history = useHistory();
+
+  //use effect for dispatch data from redux
+  useEffect(() => {
+    dispatch(getAllBranches());
+    //try to fix empty array warning
+  }, [dispatch]);
+
+  //variable for data source
+
+  const tableBranches = branchesData.map(item => ({
+    key: item._id,
+    _id: item._id,
+    branch_name: item.branch_name,
+    phone_number: item.phone_number,
+    address: item.address,
+    createdAt: moment(item.createdAt).format("LL"),
+    updatedAt: moment(item.updatedAt).format("LL"),
+    balance: item.balance,
+    blocked: item.blocked
+  }));
+
+  //variable for data presentation
+  const columns = [
+    {
+      title: "NAME",
+      dataIndex: "branch_name",
+      key: "branch_name",
+      filters: [{ text: "Joe", value: "Joe" }],
+      filteredValue: filtered.branch_name || null,
+      onFilter: (value, record) => record.branch_name.includes(value),
+      sorter: (a, b) => {
+        return a.branch_name.localeCompare(b.branch_name);
+      },
+      sortOrder: sorted.columnKey === "branch_name" && sorted.order,
+      ellipsis: true
+    },
+    {
+      title: "PHONE NUMBER",
+      dataIndex: "phone_number",
+      key: "phone_number",
+      sorter: (a, b) => {
+        return a.phone_number.localeCompare(b.phone_number);
+      },
+      sortOrder: sorted.columnKey === "phone_number" && sorted.order,
+      ellipsis: true
+    },
+    {
+      title: "ADDRESS",
+      dataIndex: "address",
+      key: "address",
+      filters: [{ text: "New York", value: "New York" }],
+      filteredValue: filtered.address || null,
+      onFilter: (value, record) => record.address.includes(value),
+      sorter: (a, b) => {
+        return a.address.localeCompare(b.address);
+      },
+      sortOrder: sorted.columnKey === "address" && sorted.order,
+      ellipsis: true
+    },
+    {
+      title: "BALANCE",
+      dataIndex: "balance",
+      key: "balance",
+      sorter: (a, b) => {
+        return a.balance.localeCompare(b.balance);
+      },
+      sortOrder: sorted.columnKey === "balance" && sorted.order,
+      ellipsis: true
+    },
+    {
+      title: "CREATED AT",
+      dataIndex: "createdAt",
+      key: "createdAt",
+      sorter: (a, b) => {
+        return a.createdAt.localeCompare(b.createdAt);
+      },
+      sortOrder: sorted.columnKey === "createdAt" && sorted.order,
+      ellipsis: true
+    },
+    {
+      title: "UPDATED AT",
+      dataIndex: "updatedAt",
+      key: "updatedAt",
+      sorter: (a, b) => {
+        return a.updatedAt.localeCompare(b.updatedAt);
+      },
+      sortOrder: sorted.columnKey === "updatedAt" && sorted.order,
+      ellipsis: true
+    }
+  ];
+
+  //variable for handling data changes (filter, sort, clear)
+
+  const handleChange = (pagination, filters, sorter) => {
+    console.log("Various parameters", pagination, filters, sorter);
+    setFiltered(filters);
+    setSorted(sorter);
+  };
+
+  const clearAll = () => {
+    setFiltered(null);
+    setSorted(null);
+  };
+
+  const rowSelection = {
+    onChange: (selectedRowKeys, selectedRows) => {
+      console.log(
+        `selectedRowKeys: ${selectedRowKeys}`,
+        "selectedRows: ",
+        selectedRows
+      );
+    },
+    onSelect: (record, selected, selectedRows) => {
+      console.log(record, selected, selectedRows);
+    },
+    onSelectAll: (selected, selectedRows, changeRows) => {
+      console.log(selected, selectedRows, changeRows);
+    }
+  };
+
+  return (
+    <div>
+      <Dropdown overlay={dropdown}>
+        <a className="dropdown" onClick={e => e.preventDefault()}>
+          Branches <DownOutlined />
+        </a>
+      </Dropdown>
+      <div className="table">
+        <Button onClick={clearFilters}>Clear filters</Button>
+        <Button onClick={clearAll}>Clear filters and sorters</Button>
+      </div>
+      <Table
+        columns={columns}
+        rowSelection={rowSelection}
+        dataSource={tableBranches}
+        onChange={handleChange}
+        onRow={(r, i) => ({
+          onClick: () => {
+            history.push(`/dashboard/banks/details/${tableBranches[i]._id}`);
+          }
+        })}
+      />
+    </div>
+  );
+};
+
+export default Branches;
