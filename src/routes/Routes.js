@@ -1,5 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
+import { useSelector } from "react-redux";
 import LandingPage from "../components/layout/layoutLandingPage";
 import SignIn from "../components/users/signIn";
 import SignUp from "../components/users/register";
@@ -14,9 +15,9 @@ import CustomersDetails from "../components/dashboardDetails/customersDetails";
 import TransactionsDetails from "../components/dashboardDetails/transactionsDetails";
 
 const DashboardRoutes = () => {
-  const login = true;
+  const token = useSelector(state => state.user.token);
 
-  if (login) {
+  if (token) {
     return (
       <div>
         <DashboardLayout>
