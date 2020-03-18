@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Table, Button, Menu, Dropdown } from "antd";
-import { DownOutlined } from "@ant-design/icons";
+import { Table, Button, Menu, Dropdown, Input } from "antd";
+import { DownOutlined, SearchOutlined } from "@ant-design/icons";
+import { Highlighter } from "react-highlight-words";
 import "../../assets/styles/dashboard/dashboardDetails.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllBranches } from "../../store/actions/branchesAction";
@@ -56,19 +57,102 @@ const Branches = () => {
     blocked: item.blocked
   }));
 
+  let searchInput = false;
+
+  const [state, setState] = useState({
+    searchText: "",
+    searchedColumn: ""
+  });
+
+  const getColumnSearchProps = dataIndex => ({
+    filterDropdown: ({
+      setSelectedKeys,
+      selectedKeys,
+      confirm,
+      clearFilters
+    }) => (
+      <div style={{ padding: 8 }}>
+        <Input
+          ref={node => {
+            searchInput = node;
+          }}
+          placeholder={`Search ${dataIndex}`}
+          value={selectedKeys[0]}
+          onChange={e =>
+            setSelectedKeys(e.target.value ? [e.target.value] : [])
+          }
+          onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
+          style={{ width: 188, marginBottom: 8, display: "block" }}
+        />
+        <Button
+          type="primary"
+          onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
+          icon={<SearchOutlined />}
+          size="small"
+          style={{ width: 90, marginRight: 8 }}
+        >
+          Search
+        </Button>
+        <Button
+          onClick={() => handleReset(clearFilters)}
+          size="small"
+          style={{ width: 90 }}
+        >
+          Reset
+        </Button>
+      </div>
+    ),
+    filterIcon: filtered => (
+      <SearchOutlined style={{ color: filtered ? "#1890ff" : undefined }} />
+    ),
+    onFilter: (value, record) =>
+      record[dataIndex]
+        .toString()
+        .toLowerCase()
+        .includes(value.toLowerCase()),
+    onFilterDropdownVisibleChange: visible => {
+      if (visible) {
+        setTimeout(() => searchInput.select());
+      }
+    },
+    render: text =>
+      state.searchedColumn === dataIndex ? (
+        <Highlighter
+          highlightStyle={{ backgroundColor: "#ffc069", padding: 0 }}
+          searchWords={[state.searchText]}
+          autoEscape
+          textToHighlight={text.toString()}
+        />
+      ) : (
+        text
+      )
+  });
+
+  const handleSearch = (selectedKeys, confirm, dataIndex) => {
+    confirm();
+    setState({
+      searchText: selectedKeys[0],
+      searchedColumn: dataIndex
+    });
+  };
+
+  const handleReset = clearFilters => {
+    clearFilters();
+    setState({ searchText: "" });
+  };
+
   //variable for data presentation
   const columns = [
     {
       title: "NAME",
       dataIndex: "branch_name",
       key: "branch_name",
-      filters: [{ text: "Joe", value: "Joe" }],
-      filteredValue: filtered.branch_name || null,
-      onFilter: (value, record) => record.branch_name.includes(value),
+      onFilter: (value, record) => record.branch_name.indexOf(value) === 0,
       sorter: (a, b) => {
         return a.branch_name.localeCompare(b.branch_name);
       },
       sortOrder: sorted.columnKey === "branch_name" && sorted.order,
+      ...getColumnSearchProps("branch_name"),
       ellipsis: true
     },
     {
@@ -85,9 +169,6 @@ const Branches = () => {
       title: "ADDRESS",
       dataIndex: "address",
       key: "address",
-      filters: [{ text: "New York", value: "New York" }],
-      filteredValue: filtered.address || null,
-      onFilter: (value, record) => record.address.includes(value),
       sorter: (a, b) => {
         return a.address.localeCompare(b.address);
       },

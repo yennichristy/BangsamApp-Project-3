@@ -12,7 +12,7 @@ export const getAllBranches = data => async dispatch => {
     const resData = await res.json();
     dispatch({
       type: "GET_BRANCHES",
-      payload: resData.data
+      payload: resData.data.docs
     });
   } catch (error) {
     console.log(error);
