@@ -4,16 +4,16 @@ const initialState = {
   error: null
 };
 
-const registerReducer = (state = initialState, action) => {
+const userReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case "SUCCESS_SIGNUP":
+    case "SUCCESS":
       return {
         ...state,
         token: payload,
         user: payload.user
       };
-    case "FAILED_SIGNUP":
+    case "FAILED":
       return {
         ...state,
         error: payload.error
@@ -23,4 +23,4 @@ const registerReducer = (state = initialState, action) => {
   }
 };
 
-export default registerReducer;
+export default userReducer;

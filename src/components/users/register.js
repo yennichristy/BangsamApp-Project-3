@@ -9,7 +9,7 @@ import {
 import Logo from "../../assets/icons/logo-items/bangsam.png";
 import "../../assets/styles/users.scss";
 import { useDispatch } from "react-redux";
-import { register } from "../../store/actions/registerAction";
+import { register } from "../../store/actions/userAction";
 import { useHistory } from "react-router-dom";
 
 const { Title } = Typography;
@@ -23,6 +23,7 @@ const Register = () => {
   const onFinish = values => {
     console.log("Received values of form: ", values);
     dispatch(register(values));
+    history.push("/dashboard");
   };
 
   return (

@@ -1,14 +1,22 @@
 import React from "react";
 import { Form, Input, Button, Checkbox, Typography } from "antd";
-import { MailOutlined, LockOutlined } from "@ant-design/icons";
+import { LockOutlined, PhoneOutlined } from "@ant-design/icons";
 import Logo from "../../assets/icons/logo-items/bangsam.png";
 import "../../assets/styles/users.scss";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { signIn } from "../../store/actions/userAction";
 
 const { Title } = Typography;
 
 const Users = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const onFinish = values => {
     console.log("Received values of form: ", values);
+    dispatch(signIn(values));
+    history.push("/dashboard");
   };
 
   return (
@@ -25,7 +33,7 @@ const Users = () => {
         <Title>WELCOME TO BANGSAM!</Title>
         <p className="users__text">Create your account</p>
         <Form.Item
-          name="email"
+          name="phone_number"
           rules={[
             {
               required: true,
@@ -34,8 +42,8 @@ const Users = () => {
           ]}
         >
           <Input
-            prefix={<MailOutlined className="site-form-item-icon" />}
-            placeholder="email"
+            prefix={<PhoneOutlined className="site-form-item-icon" />}
+            placeholder="phone number"
           />
         </Form.Item>
         <Form.Item

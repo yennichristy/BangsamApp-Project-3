@@ -1,10 +1,8 @@
 import { combineReducers } from "redux";
-import registerReducer from "./registerReducers";
 import branchesReducer from "./branchesReducers";
-import signInReducer from "./signInReducer";
+import userReducer from "./userReducer";
 
 export default combineReducers({
-  register: registerReducer,
-  signIn: signInReducer,
+  user: userReducer,
   branches: branchesReducer
 });
