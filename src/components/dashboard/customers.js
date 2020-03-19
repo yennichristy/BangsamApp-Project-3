@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Table, Button, Menu, Dropdown } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import "../../assets/styles/dashboard/dashboardDetails.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllCustomers } from "../../store/actions/customersAction";
 
 const data = [
   {
