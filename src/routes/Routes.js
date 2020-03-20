@@ -36,7 +36,7 @@ const DashboardRoutes = () => {
             component={BranchesDetails}
           />
           <Route
-            path="/dashboard/customers/details"
+            path="/dashboard/customers/details/:id"
             exact
             component={CustomersDetails}
           />
