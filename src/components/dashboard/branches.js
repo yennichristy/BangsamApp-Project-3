@@ -18,12 +18,8 @@ const Branches = () => {
     </Menu>
   );
 
-  //variable for data filtering
+  //variable for data filter
   let [filtered, setFiltered] = useState(null);
-
-  const clearFilters = () => {
-    setFiltered({ filtered: null });
-  };
 
   filtered = filtered || {};
 
@@ -44,7 +40,6 @@ const Branches = () => {
   }, [dispatch]);
 
   //variable for data source
-
   const tableBranches = branchesData.map(item => ({
     key: item._id,
     _id: item._id,
@@ -56,6 +51,8 @@ const Branches = () => {
     balance: item.balance,
     blocked: item.blocked
   }));
+
+  console.log("branch", tableBranches);
 
   let searchInput = false;
 
@@ -208,11 +205,15 @@ const Branches = () => {
   ];
 
   //variable for handling data changes (filter, sort, clear)
-
   const handleChange = (pagination, filters, sorter) => {
     console.log("Various parameters", pagination, filters, sorter);
     setFiltered(filters);
     setSorted(sorter);
+  };
+
+  //variable for button handling
+  const clearFilters = () => {
+    setFiltered({ filtered: null });
   };
 
   const clearAll = () => {
@@ -220,6 +221,7 @@ const Branches = () => {
     setSorted(null);
   };
 
+  //variable for check box selection
   const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
       console.log(
@@ -254,7 +256,7 @@ const Branches = () => {
         onChange={handleChange}
         onRow={(r, i) => ({
           onClick: () => {
-            history.push(`/dashboard/banks/details/${tableBranches[i]._id}`);
+            history.push(`/dashboard/banks/details/${r.key}`);
           }
         })}
       />
