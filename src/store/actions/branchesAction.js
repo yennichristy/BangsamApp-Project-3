@@ -1,6 +1,6 @@
 const baseUrl = "https://bangsam.herokuapp.com";
 
-export const getAllBranches = data => async dispatch => {
+export const getAllBranches = () => async dispatch => {
   try {
     const res = await fetch(`${baseUrl}/branches`, {
       method: "GET",
