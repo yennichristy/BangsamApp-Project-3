@@ -1,24 +1,10 @@
 import React, { useEffect } from "react";
-import { Descriptions, Badge, Menu, Spin, Card } from "antd";
+import { Descriptions, Spin } from "antd";
 import { getAllCustomers } from "../../store/actions/customersAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import moment from "moment";
 import "../../assets/styles/dashboard/details.scss";
-
-const menu = (
-  <Menu>
-    <Menu.Item>
-      <Badge status="success" text="Active" />
-    </Menu.Item>
-    <Menu.Item>
-      <Badge status="warning" text="Suspended" />
-    </Menu.Item>
-    <Menu.Item>
-      <Badge status="error" text="Non-Active" />
-    </Menu.Item>
-  </Menu>
-);
 
 const CustomersDetails = () => {
   const dispatch = useDispatch();
@@ -32,15 +18,6 @@ const CustomersDetails = () => {
   const customerDetail = customersDetails.filter(
     item => item._id === param.id
   )[0];
-  console.log("lolo", customersDetails);
-  console.log("lala", customerDetail);
-  console.log("lalas", param.id);
-
-  // const customerAddress = customersDetails.map(item => ({
-  //   addresses: item.addresses
-  // }));
-
-  console.log(customerDetail);
 
   if (!customerDetail) return <Spin size="large" tip="Loading..." />;
 

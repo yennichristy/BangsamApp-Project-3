@@ -16,11 +16,6 @@ const Customers = () => {
     </Menu>
   );
 
-  //variable for data filter
-  let [filtered, setFiltered] = useState(null);
-
-  filtered = filtered || {};
-
   //variable for data sorting
   let [sorted, setSorted] = useState(null);
 
@@ -54,19 +49,15 @@ const Customers = () => {
   console.log(tableCustomers);
 
   //variable for handling data changes (filter, sort, clear)
-  const handleChange = (pagination, filters, sorter) => {
-    console.log("Various parameters", pagination, filters, sorter);
-    setFiltered(filters);
+  const handleChange = (pagination, sorter) => {
+    console.log("Various parameters", pagination, sorter);
     setSorted(sorter);
   };
 
   //variable for button handling
-  const clearFilters = () => {
-    setFiltered({ filtered: null });
-  };
+  const clearFilters = () => {};
 
   const clearAll = () => {
-    setFiltered(null);
     setSorted(null);
   };
 
