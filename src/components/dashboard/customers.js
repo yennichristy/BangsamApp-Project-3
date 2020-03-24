@@ -46,8 +46,6 @@ const Customers = () => {
     balance: item.balance
   }));
 
-  console.log(tableCustomers);
-
   //variable for handling data changes (filter, sort, clear)
   const handleChange = (pagination, sorter) => {
     console.log("Various parameters", pagination, sorter);
@@ -115,7 +113,7 @@ const Customers = () => {
     }
   ];
 
-  //variable for check box selection
+  //variable for selection
   const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
       console.log(
@@ -150,7 +148,6 @@ const Customers = () => {
         onChange={handleChange}
         onRow={r => ({
           onClick: () => {
-            console.log(r);
             history.push(`/dashboard/customers/details/${r.key}`);
           }
         })}
