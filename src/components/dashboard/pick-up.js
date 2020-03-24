@@ -6,41 +6,46 @@ import { DownOutlined } from "@ant-design/icons";
 import "../../assets/styles/dashboard/dashboardDetails.scss";
 import { getAllPickup } from "../../store/actions/pickupAction";
 
-const dropdown = (
-  <Menu>
-    <Menu.Item>All Requests</Menu.Item>
-    <Menu.Item>On-Progress Requests</Menu.Item>
-    <Menu.Item>Done Requests</Menu.Item>
-    <Menu.Item>Canceled Requests</Menu.Item>
-  </Menu>
-);
-
 const Pickup = () => {
+  //variable for dropdown
+  const dropdown = (
+    <Menu>
+      <Menu.Item>All Requests</Menu.Item>
+      <Menu.Item>On-Progress Requests</Menu.Item>
+      <Menu.Item>Done Requests</Menu.Item>
+      <Menu.Item>Canceled Requests</Menu.Item>
+    </Menu>
+  );
+
   //connect Redux to component
   const dispatch = useDispatch();
   const history = useHistory();
   const pickupData = useSelector(state => state.pickup.pickup);
 
+  //use effect for dispatch data from redux
   useEffect(() => {
     dispatch(getAllPickup());
   }, [dispatch]);
 
+  //variable for data source
   const tablePickup = pickupData.map(item => ({
     key: item._id,
     _id: item._id,
     customer: item.user.full_name,
     bank: item.branch.branch_name,
-    //reduce untuk kalkulasi, parseInt untuk mengubah string menjadi number
+    //reduce for calculation, parseInt for change data type string to number
     weight:
       item.item_details.reduce((acc, curr) => acc + parseInt(curr.weight), 0) +
       " kg",
     amount: "Rp " + item.amount
   }));
 
-  console.log("table", tablePickup);
-
+  //variable for sorting data
   let [sorted, setSorted] = useState(null);
 
+  sorted = sorted || {};
+
+  //variable for handling data changes (filter, sort, clear)
   const handleChange = (pagination, filters, sorter) => {
     console.log("Various parameters", pagination, filters, sorter);
     setSorted(sorter);
@@ -50,17 +55,7 @@ const Pickup = () => {
     setSorted(null);
   };
 
-  const setAgeSort = () => {
-    setSorted({
-      sorted: {
-        order: "descend",
-        columnKey: "type"
-      }
-    });
-  };
-
-  sorted = sorted || {};
-
+  //variable for data presentation
   const columns = [
     {
       title: "CUSTOMER NAME",
@@ -104,6 +99,7 @@ const Pickup = () => {
     }
   ];
 
+  //variable for row selection
   const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
       console.log(
@@ -128,7 +124,6 @@ const Pickup = () => {
         </a>
       </Dropdown>
       <div className="table">
-        <Button onClick={setAgeSort}>Delete</Button>
         <Button onClick={clearAll}>Clear filters and sorters</Button>
       </div>
       <Table
