@@ -7,22 +7,34 @@ import moment from "moment";
 import "../../assets/styles/dashboard/details.scss";
 
 const CustomersDetails = () => {
+  //connect Redux to component
   const dispatch = useDispatch();
   const customersDetails = useSelector(state => state.customers.customers);
   const param = useParams();
 
+  //use effect foor dispatch data from redux
   useEffect(() => {
     dispatch(getAllCustomers());
   }, [dispatch]);
 
+  //variable for filter data by id
   const customerDetail = customersDetails.filter(
     item => item._id === param.id
   )[0];
 
+  //condition if the maun data is not loaded
   if (!customerDetail) return <Spin size="large" tip="Loading..." />;
 
-  const { addresses } = customerDetail;
-  console.log(addresses);
+  //variable destructure hasil filter data by id
+  const {
+    full_name: fullName,
+    email,
+    phone_number: phoneNumber,
+    balance,
+    createdAt,
+    updatedAt,
+    addresses
+  } = customerDetail;
 
   return (
     <div>
@@ -32,23 +44,17 @@ const CustomersDetails = () => {
         layout="vertical"
         bordered
       >
-        <Descriptions.Item label="Name">
-          {customerDetail.full_name}
-        </Descriptions.Item>
-        <Descriptions.Item label="Email">
-          {customerDetail.email}
-        </Descriptions.Item>
+        <Descriptions.Item label="Name">{fullName}</Descriptions.Item>
+        <Descriptions.Item label="Email">{email}</Descriptions.Item>
         <Descriptions.Item label="Phone Number">
-          {customerDetail.phone_number}
+          {phoneNumber}
         </Descriptions.Item>
-        <Descriptions.Item label="Balance">
-          {customerDetail.balance}
-        </Descriptions.Item>
+        <Descriptions.Item label="Balance">{balance}</Descriptions.Item>
         <Descriptions.Item label="Created at">
-          {moment(customerDetail.createdAt).format("MMMM Do YYYY, h:mm:ss a")}
+          {moment(createdAt).format("MMMM Do YYYY, h:mm:ss a")}
         </Descriptions.Item>
         <Descriptions.Item label="Updated at">
-          {moment(customerDetail.updatedAt).format("MMMM Do YYYY, h:mm:ss a")}
+          {moment(updatedAt).format("MMMM Do YYYY, h:mm:ss a")}
         </Descriptions.Item>
       </Descriptions>
       <Descriptions size="small" title="Adresses" layout="vertical" bordered>
