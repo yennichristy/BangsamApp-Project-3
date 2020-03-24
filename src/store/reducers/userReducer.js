@@ -18,6 +18,12 @@ const userReducer = (state = initialState, action) => {
         ...state,
         error: payload.error
       };
+    case "SIGN_OUT":
+      localStorage.removeItem("token");
+      return {
+        ...state,
+        token: null
+      };
     default:
       return { ...state };
   }

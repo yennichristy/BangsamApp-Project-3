@@ -25,17 +25,22 @@
   }
 }
 
-.ant-btn-group {
-  display: inline-flex;
-  float: right;
-  margin-left: 2%;
-}
-
-.ant-input-affix-wrapper {
-  float: right;
+.ant-layout-header {
+  padding: 15px 50px;
 }
 
 //top-navigation
+
+.ant-avatar.ant-avatar-circle.ant-avatar-icon {
+  display: block;
+  float: right;
+}
+
+.ant-btn.ant-btn-primary.ant-btn-round {
+  display: block;
+  float: right;
+  margin-left: 15px;
+}
 
 .site-layout-sub-header-background {
   background: #fff;

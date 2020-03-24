@@ -1,6 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Layout, Menu, Dropdown, message, Input } from "antd";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { signOut } from "../../store/actions/userAction";
+import { Layout, Menu, Button, Avatar } from "antd";
 import {
   UserOutlined,
   CarFilled,
@@ -14,23 +16,15 @@ import Bangsam from "../../assets/icons/logo-items/bangsam_white.png";
 
 const { Header, Content, Footer, Sider } = Layout;
 
-const { Search } = Input;
-
-function handleMenuClick(e) {
-  message.info("Click on menu item.");
-  console.log("click", e);
-}
-
-const menu = (
-  <Menu onClick={handleMenuClick}>
-    <Menu.Item key="1">
-      <LogoutOutlined />
-      Log out
-    </Menu.Item>
-  </Menu>
-);
-
 const DashboardLayout = props => {
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const logOut = () => {
+    dispatch(signOut());
+    history.push("/signin");
+  };
+
   return (
     <Layout className="dashboard">
       <Sider
@@ -84,14 +78,15 @@ const DashboardLayout = props => {
           className="site-layout-sub-header-background"
           style={{ padding: 15 }}
         >
-          <Dropdown.Button overlay={menu} icon={<UserOutlined />}>
-            Admin Name
-          </Dropdown.Button>
-          <Search
-            placeholder="Search"
-            onSearch={value => console.log(value)}
-            style={{ width: 400 }}
-          />
+          <Button
+            type="primary"
+            shape="round"
+            icon={<LogoutOutlined />}
+            onClick={logOut}
+          >
+            Sign out
+          </Button>
+          <Avatar icon={<UserOutlined />} />
         </Header>
         <Content style={{ margin: "24px 16px 0" }}>
           <div className="content" style={{ padding: 24, minHeight: 360 }}>

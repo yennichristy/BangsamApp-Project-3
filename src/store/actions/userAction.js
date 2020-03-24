@@ -11,7 +11,7 @@ export const register = data => async dispatch => {
       body: JSON.stringify(data)
     });
     const resData = await res.json();
-    localStorage.setItem("token", resData.data);
+    localStorage.setItem("token", resData.data.token);
     dispatch({
       type: "SUCCESS",
       payload: resData.data
@@ -37,7 +37,7 @@ export const signIn = data => async dispatch => {
       body: JSON.stringify(data)
     });
     const resData = await res.json();
-    localStorage.setItem("token", resData.data);
+    localStorage.setItem("token", resData.data.token);
     dispatch({
       type: "SUCCESS",
       payload: resData.data
@@ -50,4 +50,10 @@ export const signIn = data => async dispatch => {
     });
     console.log(error);
   }
+};
+
+export const signOut = () => {
+  return {
+    type: "SIGN_OUT"
+  };
 };
