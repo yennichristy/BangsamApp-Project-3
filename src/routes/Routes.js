@@ -13,9 +13,11 @@ import Pickup from "../components/dashboard/pick-up";
 import BranchesDetails from "../components/dashboardDetails/branchesDetails";
 import CustomersDetails from "../components/dashboardDetails/customersDetails";
 import TransactionsDetails from "../components/dashboardDetails/transactionsDetails";
+import PickupsDetails from "../components/dashboardDetails/pickupsDetails";
 
 const DashboardRoutes = () => {
   const token = useSelector(state => state.user.token);
+  console.log("test", token);
 
   if (token) {
     return (
@@ -44,6 +46,11 @@ const DashboardRoutes = () => {
             path="/dashboard/transactions/details"
             exact
             component={TransactionsDetails}
+          />
+          <Route
+            path="/dashboard/pickup-requests/details"
+            exact
+            component={PickupsDetails}
           />
         </DashboardLayout>
       </div>
