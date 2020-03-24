@@ -48,7 +48,7 @@ const DashboardRoutes = () => {
             component={TransactionsDetails}
           />
           <Route
-            path="/dashboard/pickup-requests/details:id"
+            path="/dashboard/pickup-requests/details/:id"
             exact
             component={PickupsDetails}
           />

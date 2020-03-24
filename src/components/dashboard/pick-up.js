@@ -1,30 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { Table, Button, Menu, Dropdown } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import "../../assets/styles/dashboard/dashboardDetails.scss";
-
-const data = [
-  {
-    key: "1",
-    customer: "Ricky",
-    address: "KDA Cluster Geltaik Blok G12",
-    bank: "Bank KDA",
-    bankaddress: "Batam",
-    wastetype: "Plastic",
-    wasteweight: "5kg",
-    wastePrice: "Rp 10000"
-  },
-  {
-    key: "2",
-    customer: "Jason",
-    address: "Rusun BP",
-    bank: "Bank KDA",
-    bankaddress: "Batam",
-    wastetype: "Wood",
-    wasteweight: "15kg",
-    wastePrice: "Rp 20000"
-  }
-];
+import { getAllPickup } from "../../store/actions/pickupAction";
 
 const dropdown = (
   <Menu>
@@ -36,21 +16,37 @@ const dropdown = (
 );
 
 const Pickup = () => {
-  let [filtered, setFiltered] = useState(null);
+  //connect Redux to component
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const pickupData = useSelector(state => state.pickup.pickup);
+
+  useEffect(() => {
+    dispatch(getAllPickup());
+  }, [dispatch]);
+
+  const tablePickup = pickupData.map(item => ({
+    key: item._id,
+    _id: item._id,
+    customer: item.user.full_name,
+    bank: item.branch.branch_name,
+    //reduce untuk kalkulasi, parseInt untuk mengubah string menjadi number
+    weight:
+      item.item_details.reduce((acc, curr) => acc + parseInt(curr.weight), 0) +
+      " kg",
+    amount: "Rp " + item.amount
+  }));
+
+  console.log("table", tablePickup);
+
   let [sorted, setSorted] = useState(null);
 
   const handleChange = (pagination, filters, sorter) => {
     console.log("Various parameters", pagination, filters, sorter);
-    setFiltered(filters);
     setSorted(sorter);
   };
 
-  const clearFilters = () => {
-    setFiltered({ filtered: null });
-  };
-
   const clearAll = () => {
-    setFiltered(null);
     setSorted(null);
   };
 
@@ -63,74 +59,47 @@ const Pickup = () => {
     });
   };
 
-  filtered = filtered || {};
   sorted = sorted || {};
 
   const columns = [
     {
-      title: "CUSTOMER",
+      title: "CUSTOMER NAME",
       dataIndex: "customer",
       key: "customer",
-      filters: [
-        { text: "Ricky", value: "Ricky" },
-        { text: "Jason", value: "Jason" }
-      ],
-      filteredValue: filtered.customer || null,
-      onFilter: (value, record) => record.customer.includes(value),
-      sorter: (a, b) => a.customer.length - b.customer.length,
+      sorter: (a, b) => {
+        return a.customer.localeCompare(b.customer);
+      },
       sortOrder: sorted.columnKey === "customer" && sorted.order,
-      ellipsis: true
-    },
-    {
-      title: "CUSTOMER ADDRESS",
-      dataIndex: "address",
-      key: "address",
-      sorter: (a, b) => a.address - b.address,
-      sortOrder: sorted.columnKey === "address" && sorted.order,
       ellipsis: true
     },
     {
       title: "BANK",
       dataIndex: "bank",
       key: "bank",
-      sorter: (a, b) => a.bank - b.bank,
-      sortOrder: sorted.columnKey === "phone" && sorted.order,
+      sorter: (a, b) => {
+        return a.bank.localeCompare(b.bank);
+      },
+      sortOrder: sorted.columnKey === "bank" && sorted.order,
       ellipsis: true
     },
     {
-      title: "BANK ADDRESS",
-      dataIndex: "bankadd",
-      key: "bankadd",
-      sorter: (a, b) => a.bankadd - b.bankadd,
-      sortOrder: sorted.columnKey === "bankadd" && sorted.order,
-      ellipsis: true
-    },
-    {
-      title: "WASTE",
-      dataIndex: "waste",
-      key: "waste",
-      filters: [
-        { text: "Plastic", value: "plastic" },
-        { text: "Wood", value: "Wood" }
-      ],
-      filteredValue: filtered.waste || null,
-      onFilter: (value, record) => record.waste.includes(value),
-      sorter: (a, b) => a.waste - b.waste,
-      sortOrder: sorted.columnKey === "waste" && sorted.order,
-      ellipsis: true
-    },
-    {
-      title: "WASTE WEIGHT",
+      title: "TOTAL WEIGHT",
       dataIndex: "weight",
       key: "weight",
+      sorter: (a, b) => {
+        return a.weight.localeCompare(b.weight);
+      },
       sortOrder: sorted.columnKey === "weight" && sorted.order,
       ellipsis: true
     },
     {
       title: "WASTE PRICE",
-      dataIndex: "price",
-      key: "price",
-      sortOrder: sorted.columnKey === "price" && sorted.order,
+      dataIndex: "amount",
+      key: "amount",
+      sorter: (a, b) => {
+        return a.amount.localeCompare(b.amount);
+      },
+      sortOrder: sorted.columnKey === "amount" && sorted.order,
       ellipsis: true
     }
   ];
@@ -160,14 +129,18 @@ const Pickup = () => {
       </Dropdown>
       <div className="table">
         <Button onClick={setAgeSort}>Delete</Button>
-        <Button onClick={clearFilters}>Clear filters</Button>
         <Button onClick={clearAll}>Clear filters and sorters</Button>
       </div>
       <Table
         columns={columns}
         rowSelection={rowSelection}
-        dataSource={data}
+        dataSource={tablePickup}
         onChange={handleChange}
+        onRow={r => ({
+          onClick: () => {
+            history.push(`/dashboard/pickup-requests/details/${r.key}`);
+          }
+        })}
       />
     </div>
   );
