@@ -14,7 +14,7 @@ import {
 import "../../assets/styles/dashboard/layout.scss";
 import Bangsam from "../../assets/icons/logo-items/bangsam_white.png";
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Sider } = Layout;
 
 const DashboardLayout = props => {
   const history = useHistory();
