@@ -12,7 +12,7 @@ const CustomersDetails = () => {
   const customersDetails = useSelector(state => state.customers.customers);
   const param = useParams();
 
-  //use effect foor dispatch data from redux
+  //use effect for dispatch data from redux
   useEffect(() => {
     dispatch(getAllCustomers());
   }, [dispatch]);
@@ -22,10 +22,10 @@ const CustomersDetails = () => {
     item => item._id === param.id
   )[0];
 
-  //condition if the maun data is not loaded
+  //condition if the main data is not loaded
   if (!customerDetail) return <Spin size="large" tip="Loading..." />;
 
-  //variable destructure hasil filter data by id
+  //variable destructure filter data by id
   const {
     full_name: fullName,
     email,
