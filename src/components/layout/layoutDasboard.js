@@ -93,7 +93,6 @@ const DashboardLayout = props => {
             {props.children}
           </div>
         </Content>
-        <Footer style={{ textAlign: "center" }}>Bangsam ©2020</Footer>
       </Layout>
     </Layout>
   );
