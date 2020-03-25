@@ -1,21 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Table, Button, Menu, Dropdown, Spin } from "antd";
-import { DownOutlined } from "@ant-design/icons";
+import { Table, Button, Typography, Spin } from "antd";
 import "../../assets/styles/dashboard/dashboardDetails.scss";
 import { getAllPickup } from "../../store/actions/pickupAction";
 
 const Pickup = () => {
-  //variable for dropdown
-  const dropdown = (
-    <Menu>
-      <Menu.Item>All Requests</Menu.Item>
-      <Menu.Item>On-Progress Requests</Menu.Item>
-      <Menu.Item>Done Requests</Menu.Item>
-      <Menu.Item>Canceled Requests</Menu.Item>
-    </Menu>
-  );
+  const { Title } = Typography;
 
   //connect Redux to component
   const dispatch = useDispatch();
@@ -120,13 +111,9 @@ const Pickup = () => {
 
   return (
     <div>
-      <Dropdown overlay={dropdown}>
-        <a className="dropdown" onClick={e => e.preventDefault()}>
-          Pick-up Requests <DownOutlined />
-        </a>
-      </Dropdown>
+      <Title>Pick-up Requests</Title>
       <div className="table">
-        <Button onClick={clearAll}>Clear filters and sorters</Button>
+        <Button onClick={clearAll}>Clear sorters</Button>
       </div>
       <Table
         columns={columns}

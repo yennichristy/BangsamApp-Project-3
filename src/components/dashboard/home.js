@@ -49,7 +49,7 @@ const Dashboard = () => {
           <Col span={6}>
             <Card className="content__data__details">
               <TeamOutlined />
-              <span>Suspended Customer</span>
+              <span>Blocked Customer</span>
               <p>100</p>
             </Card>
           </Col>

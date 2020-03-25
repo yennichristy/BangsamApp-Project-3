@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Table, Button, Menu, Dropdown, Input, Spin } from "antd";
-import { DownOutlined, SearchOutlined } from "@ant-design/icons";
+import { Table, Button, Typography, Input, Spin } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
 import { Highlighter } from "react-highlight-words";
 import "../../assets/styles/dashboard/dashboardDetails.scss";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,19 +9,7 @@ import { getAllBranches } from "../../store/actions/branchesAction";
 import moment from "moment";
 
 const Branches = () => {
-  //variable for dropdown
-  const dropdown = (
-    <Menu>
-      <Menu.Item>All Branches</Menu.Item>
-      <Menu.Item>Active Branches</Menu.Item>
-      <Menu.Item>Suspended Branches</Menu.Item>
-    </Menu>
-  );
-
-  //variable for data sorting
-  let [sorted, setSorted] = useState(null);
-
-  sorted = sorted || {};
+  const { Title } = Typography;
 
   //connect Redux to component
   const dispatch = useDispatch();
@@ -46,6 +34,11 @@ const Branches = () => {
     balance: item.balance,
     blocked: item.blocked
   }));
+
+  //variable for data sorting
+  let [sorted, setSorted] = useState(null);
+
+  sorted = sorted || {};
 
   let searchInput = false;
 
@@ -228,13 +221,9 @@ const Branches = () => {
 
   return (
     <div>
-      <Dropdown overlay={dropdown}>
-        <a className="dropdown" onClick={e => e.preventDefault()}>
-          Branches <DownOutlined />
-        </a>
-      </Dropdown>
+      <Title>Branches</Title>
       <div className="table">
-        <Button onClick={clearAll}>Clear filters and sorters</Button>
+        <Button onClick={clearAll}>Clear sorters</Button>
       </div>
       <Table
         columns={columns}

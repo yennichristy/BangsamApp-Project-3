@@ -65,6 +65,32 @@
   border-color: #30572d;
 }
 
+.dropdown-btn {
+  border: none;
+  color: #30572d;
+  margin-right: 35px;
+}
+
+.user-name {
+  display: block;
+  float: right;
+  border: none;
+  font-weight: bold;
+}
+
+.date {
+  display: block;
+  float: left;
+  color: #30572d;
+  font-size: 15px;
+  border: none;
+}
+
+.h1.ant-typography {
+  text-align: left;
+  color: #30572d;
+}
+
 .content {
   background: #f0f2f5;
   height: 100%;

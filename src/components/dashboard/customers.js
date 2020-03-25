@@ -1,25 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Table, Button, Menu, Dropdown, Spin } from "antd";
-import { DownOutlined } from "@ant-design/icons";
+import { Table, Button, Spin, Typography } from "antd";
 import "../../assets/styles/dashboard/dashboardDetails.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCustomers } from "../../store/actions/customersAction";
 import { useHistory } from "react-router-dom";
 
 const Customers = () => {
-  //variable for dropdown
-  const dropdown = (
-    <Menu>
-      <Menu.Item>All Customers</Menu.Item>
-      <Menu.Item>Active Customers</Menu.Item>
-      <Menu.Item>Non-Active Cusstomers</Menu.Item>
-    </Menu>
-  );
-
-  //variable for data sorting
-  let [sorted, setSorted] = useState(null);
-
-  sorted = sorted || {};
+  const { Title } = Typography;
 
   //connect Redux to component
   const dispatch = useDispatch();
@@ -46,15 +33,18 @@ const Customers = () => {
     balance: item.balance
   }));
 
+  //variable for data sorting
+  let [sorted, setSorted] = useState(null);
+
+  sorted = sorted || {};
+
   //variable for handling data changes (filter, sort, clear)
-  const handleChange = (pagination, sorter) => {
-    console.log("Various parameters", pagination, sorter);
+  const handleChange = (pagination, filters, sorter) => {
+    console.log("Various parameters", pagination, filters, sorter);
     setSorted(sorter);
   };
 
   //variable for button handling
-  const clearFilters = () => {};
-
   const clearAll = () => {
     setSorted(null);
   };
@@ -134,14 +124,9 @@ const Customers = () => {
 
   return (
     <div>
-      <Dropdown overlay={dropdown}>
-        <a className="dropdown" onClick={e => e.preventDefault()}>
-          Customers <DownOutlined />
-        </a>
-      </Dropdown>
+      <Title>Customers</Title>
       <div className="table">
-        <Button onClick={clearFilters}>Clear filters</Button>
-        <Button onClick={clearAll}>Clear filters and sorters</Button>
+        <Button onClick={clearAll}>Clear sorters</Button>
       </div>
       <Table
         columns={columns}

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Table, Button, Menu, Dropdown } from "antd";
-import { DownOutlined } from "@ant-design/icons";
+import { Table, Button, Typography } from "antd";
 import "../../assets/styles/dashboard/dashboardDetails.scss";
 
 const data = [
@@ -28,17 +27,11 @@ const data = [
   }
 ];
 
-const dropdown = (
-  <Menu>
-    <Menu.Item>Daily</Menu.Item>
-    <Menu.Item>Monthly</Menu.Item>
-    <Menu.Item>Yearly</Menu.Item>
-  </Menu>
-);
-
 const Transactions = () => {
   let [filtered, setFiltered] = useState(null);
   let [sorted, setSorted] = useState(null);
+
+  const { Title } = Typography;
 
   const handleChange = (pagination, filters, sorter) => {
     console.log("Various parameters", pagination, filters, sorter);
@@ -170,11 +163,7 @@ const Transactions = () => {
 
   return (
     <div>
-      <Dropdown overlay={dropdown}>
-        <a className="dropdown" onClick={e => e.preventDefault()}>
-          Transactions <DownOutlined />
-        </a>
-      </Dropdown>
+      <Title>Transactions</Title>
       <div className="table">
         <Button onClick={setAgeSort}>Delete</Button>
         <Button onClick={clearFilters}>Clear filters</Button>

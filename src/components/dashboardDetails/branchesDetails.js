@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Descriptions, Badge, Menu, Dropdown, Button, Spin } from "antd";
+import { Descriptions, Badge, Spin } from "antd";
 import "../../assets/styles/dashboard/details.scss";
 import { getAllBranches } from "../../store/actions/branchesAction";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,17 +7,6 @@ import { useParams } from "react-router-dom";
 import moment from "moment";
 
 const BranchesDetails = () => {
-  const menu = (
-    <Menu>
-      <Menu.Item>
-        <Badge status="success" text="Active" />
-      </Menu.Item>
-      <Menu.Item>
-        <Badge status="error" text="Blocked" />
-      </Menu.Item>
-    </Menu>
-  );
-
   //connect Redux to component
   const dispatch = useDispatch();
   const branchesDetails = useSelector(state => state.branches.branches);
@@ -66,9 +55,11 @@ const BranchesDetails = () => {
           {moment(updatedAt).format("MMMM Do YYYY, h:mm:ss a")}
         </Descriptions.Item>
         <Descriptions.Item label="Status">
-          <Dropdown overlay={menu} placement="bottomRight">
-            <Button className="statusbtn">{blocked}Status</Button>
-          </Dropdown>
+          {!blocked ? (
+            <Badge status="success" text="Active" />
+          ) : (
+            <Badge status="error" text="Blocked" />
+          )}
         </Descriptions.Item>
       </Descriptions>
     </div>

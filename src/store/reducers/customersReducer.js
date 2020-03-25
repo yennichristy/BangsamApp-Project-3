@@ -1,5 +1,6 @@
 const initialState = {
-  customers: []
+  customers: [],
+  currentUser: []
 };
 
 const customersReducer = (state = initialState, action) => {
@@ -9,6 +10,11 @@ const customersReducer = (state = initialState, action) => {
       return {
         ...state,
         customers: payload
+      };
+    case "GET_CURRENT_USER":
+      return {
+        ...state,
+        currentUser: payload
       };
     default:
       return {
