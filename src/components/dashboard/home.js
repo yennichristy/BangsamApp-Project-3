@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Card, Col, Row } from "antd";
 import {
   TeamOutlined,
@@ -7,9 +8,17 @@ import {
   DollarCircleFilled
 } from "@ant-design/icons";
 import "../../assets/styles/dashboard/home.scss";
+import { getDashboardData } from "../../store/actions/homeAction";
 import formatDigit from "../../helpers";
 
-const dashboard = () => {
+const Dashboard = () => {
+  const dispatch = useDispatch();
+  const dashboardData = useSelector(state => state.dashboard.dashboard);
+
+  useEffect(() => {
+    dispatch(getDashboardData());
+  }, [dispatch]);
+
   return (
     <div className="content" style={{ padding: 24, minHeight: 360 }}>
       <div className="content__data">
@@ -18,21 +27,21 @@ const dashboard = () => {
             <Card className="content__data__details">
               <BankFilled />
               <span>Total Bank</span>
-              <p>100</p>
+              <p>{dashboardData && dashboardData.branch.total}</p>
             </Card>
           </Col>
           <Col span={6}>
             <Card className="content__data__details">
               <BankFilled />
               <span>Suspended Bank</span>
-              <p>100</p>
+              <p>{dashboardData && dashboardData.branch.suspended}</p>
             </Card>
           </Col>
           <Col span={6}>
             <Card className="content__data__details">
               <TeamOutlined />
               <span>Total Customer</span>
-              <p>100</p>
+              <p>{dashboardData && dashboardData.customer.total}</p>
             </Card>
           </Col>
           <Col span={6}>
@@ -78,7 +87,7 @@ const dashboard = () => {
             <Card className="content__data__details">
               <CarFilled />
               <span>Pick-up Request</span>
-              <p>100 requests</p>
+              <p>{dashboardData && dashboardData.pickups.total} requests</p>
             </Card>
           </Col>
           <Col span={12}>
@@ -94,4 +103,4 @@ const dashboard = () => {
   );
 };
 
-export default dashboard;
+export default Dashboard;
