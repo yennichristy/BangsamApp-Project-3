@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Table, Button, Menu, Dropdown } from "antd";
+import { Table, Button, Menu, Dropdown, Spin } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import "../../assets/styles/dashboard/dashboardDetails.scss";
 import { getAllPickup } from "../../store/actions/pickupAction";
@@ -115,6 +115,8 @@ const Pickup = () => {
       console.log(selected, selectedRows, changeRows);
     }
   };
+
+  if (!tablePickup) return <Spin size="large" tip="Loading..." />;
 
   return (
     <div>

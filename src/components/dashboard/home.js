@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Card, Col, Row } from "antd";
+import { Card, Col, Row, Spin } from "antd";
 import {
   TeamOutlined,
   BankFilled,
@@ -18,6 +18,8 @@ const Dashboard = () => {
   useEffect(() => {
     dispatch(getDashboardData());
   }, [dispatch]);
+
+  if (!dashboardData) return <Spin size="large" tip="Loading..." />;
 
   return (
     <div className="content" style={{ padding: 24, minHeight: 360 }}>

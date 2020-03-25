@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table, Button, Menu, Dropdown } from "antd";
+import { Table, Button, Menu, Dropdown, Spin } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import "../../assets/styles/dashboard/dashboardDetails.scss";
 import { useDispatch, useSelector } from "react-redux";
@@ -129,6 +129,8 @@ const Customers = () => {
       console.log(selected, selectedRows, changeRows);
     }
   };
+
+  if (!tableCustomers) return <Spin size="large" tip="Loading..." />;
 
   return (
     <div>

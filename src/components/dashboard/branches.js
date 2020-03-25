@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Table, Button, Menu, Dropdown, Input } from "antd";
+import { Table, Button, Menu, Dropdown, Input, Spin } from "antd";
 import { DownOutlined, SearchOutlined } from "@ant-design/icons";
 import { Highlighter } from "react-highlight-words";
 import "../../assets/styles/dashboard/dashboardDetails.scss";
@@ -46,8 +46,6 @@ const Branches = () => {
     balance: item.balance,
     blocked: item.blocked
   }));
-
-  console.log("branch", tableBranches);
 
   let searchInput = false;
 
@@ -225,6 +223,8 @@ const Branches = () => {
       console.log(selected, selectedRows, changeRows);
     }
   };
+
+  if (!tableBranches) return <Spin size="large" tip="Loading..." />;
 
   return (
     <div>
