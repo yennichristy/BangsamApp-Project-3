@@ -1,0 +1,43 @@
+.features {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  height: 40vh;
+  &__decoration {
+    position: absolute;
+    right: 0;
+    margin-top: -18%;
+  }
+  &__decoration2 {
+    position: absolute;
+    margin-top: -1%;
+  }
+  &__container {
+    grid-column: 2/15;
+    margin-top: 4%;
+    &__title {
+      text-align: center;
+      font-family: "Bebas Neue", cursive;
+      line-height: 1rem;
+      font-size: 4rem;
+    }
+    &__items {
+      display: flex;
+      justify-content: center;
+      &__detail {
+        margin-left: 3rem;
+        img {
+          width: 8rem;
+          margin-left: 2rem;
+          margin-right: 2rem;
+        }
+        p {
+          font-family: "Open Sans Condensed", sans-serif;
+          font-size: 1.5rem;
+          font-weight: bold;
+          text-align: center;
+          line-height: 1.8rem;
+        }
+      }
+    }
+  }
+}

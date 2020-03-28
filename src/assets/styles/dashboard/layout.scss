@@ -21,7 +21,7 @@
   img {
     max-width: 60%;
     max-height: 100%;
-    margin-left: 35%;
+    margin-left: 20%;
   }
 }
 
@@ -89,6 +89,23 @@
 .h1.ant-typography {
   text-align: left;
   color: #30572d;
+}
+
+.ant-pagination-item-active {
+  border-color: #30572d;
+  a {
+    color: #30572d;
+  }
+  a:hover {
+    color: #30572d;
+  }
+}
+.ant-pagination-item-active:hover {
+  border-color: #30572d;
+}
+
+.ant-pagination-item-active:focus {
+  border-color: #30572d;
 }
 
 .content {

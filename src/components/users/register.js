@@ -37,7 +37,7 @@ const Register = () => {
         onFinish={onFinish}
       >
         <img src={Logo} alt="logo"></img>
-        <Title>WELCOME!</Title>
+        <Title level={2}>WELCOME TO BANGSAM!</Title>
         <p className="users__text">Create your account</p>
         <Form.Item
           name="first_name"

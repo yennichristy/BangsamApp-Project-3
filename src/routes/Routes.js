@@ -1,7 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import { useSelector } from "react-redux";
-import LandingPage from "../components/layout/layoutLandingPage";
 import SignIn from "../components/users/signIn";
 import SignUp from "../components/users/register";
 import DashboardLayout from "../components/layout/layoutDasboard";
@@ -14,6 +13,7 @@ import BranchesDetails from "../components/dashboardDetails/branchesDetails";
 import CustomersDetails from "../components/dashboardDetails/customersDetails";
 import TransactionsDetails from "../components/dashboardDetails/transactionsDetails";
 import PickupsDetails from "../components/dashboardDetails/pickupsDetails";
+import LandingPage from "../components/LandingPage/LandingPage";
 
 const DashboardRoutes = () => {
   const token = useSelector(state => state.user.token);
