@@ -1,0 +1,55 @@
+.dropdown {
+  color: #30572d;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.dropdown:hover {
+  color: #64b15d;
+}
+
+.dropdown:active {
+  color: #64b15d;
+}
+
+.ant-dropdown-trigger > .anticon.anticon-down {
+  font-size: 15px;
+}
+
+.table {
+  margin-bottom: 16px;
+}
+
+.table > button {
+  margin-right: 8px;
+}
+
+.ant-table-filter-dropdown-btns {
+  a {
+    color: #30572d;
+  }
+}
+
+.statusbtn {
+  border: none;
+  background-color: #f0f2f5;
+  box-shadow: none;
+}
+
+.statusbtn:hover {
+  background-color: #f0f2f5;
+}
+
+.ant-descriptions-title {
+  color: #30572d;
+  font-size: 22px;
+}
+
+.pick-up {
+  margin-bottom: 15px;
+}
+
+h1.ant-typography {
+  text-align: left;
+  color: #30572d;
+}

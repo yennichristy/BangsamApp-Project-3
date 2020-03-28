@@ -1,0 +1,131 @@
+.dashboard {
+  height: 100vh;
+}
+
+.ant-layout-sider-children {
+  background-color: #30572d;
+}
+
+.ant-menu-dark.ant-menu-inline {
+  background-color: #30572d;
+}
+
+.ant-menu.ant-menu-dark .ant-menu-item-selected {
+  background-color: #64b15d;
+}
+
+.logo {
+  height: 9%;
+  margin: 16px;
+  background: none;
+  img {
+    max-width: 60%;
+    max-height: 100%;
+    margin-left: 20%;
+  }
+}
+
+.ant-layout-header {
+  padding: 15px 50px;
+}
+
+//top-navigation
+
+.ant-avatar.ant-avatar-circle.ant-avatar-icon {
+  display: block;
+  float: right;
+}
+
+.ant-btn.ant-btn-primary.ant-btn-round {
+  display: block;
+  float: right;
+  margin-left: 15px;
+}
+
+.site-layout-sub-header-background {
+  background: #fff;
+}
+
+.ant-input-affix-wrapper:hover {
+  border-color: #30572d;
+}
+
+.ant-input-affix-wrapper:focus {
+  border-color: #30572d;
+  box-shadow: 0 0 0 2px rgba(24, 255, 24, 0.2);
+}
+
+.ant-input-affix-wrapper-focused {
+  border-color: #30572d;
+  box-shadow: 0 0 0 2px rgba(24, 255, 24, 0.2);
+}
+
+.ant-btn:hover {
+  color: #30572d;
+  border-color: #30572d;
+}
+
+.dropdown-btn {
+  border: none;
+  color: #30572d;
+  margin-right: 35px;
+}
+
+.user-name {
+  display: block;
+  float: right;
+  border: none;
+  font-weight: bold;
+}
+
+.date {
+  display: block;
+  float: left;
+  color: #30572d;
+  font-size: 15px;
+  border: none;
+}
+
+.h1.ant-typography {
+  text-align: left;
+  color: #30572d;
+}
+
+.ant-pagination-item-active {
+  border-color: #30572d;
+  a {
+    color: #30572d;
+  }
+  a:hover {
+    color: #30572d;
+  }
+}
+.ant-pagination-item-active:hover {
+  border-color: #30572d;
+}
+
+.ant-pagination-item-active:focus {
+  border-color: #30572d;
+}
+
+.content {
+  background: #f0f2f5;
+  height: 100%;
+  &__data {
+    &__details {
+      border: white;
+      border-radius: 6px;
+      margin-bottom: 5%;
+      p {
+        font-size: 40px;
+        font-weight: bold;
+        margin-bottom: 0px;
+      }
+      span {
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 5%;
+      }
+    }
+  }
+}
