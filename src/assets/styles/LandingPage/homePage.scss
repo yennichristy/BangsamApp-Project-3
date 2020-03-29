@@ -36,23 +36,27 @@
       color: #595959;
       font-size: 5rem;
     }
-    button {
-      font-family: "Open Sans Condensed", sans-serif;
-      font-size: 1.2rem;
-      background-color: #509575;
-      border: none;
-      border-radius: 0.5rem;
-      color: white;
-      font-weight: bold;
-      padding: 12px 20px;
-      margin-top: -5%;
-      margin-left: 4%;
-      box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.1),
-        0 4px 4px 0 rgba(0, 0, 0, 0.15);
-      cursor: pointer;
-      &:hover {
-        background-color: #66ad8c;
+    &__button {
+      display: flex;
+      max-height: 20px;
+      button {
+        font-family: "Open Sans Condensed", sans-serif;
+        font-size: 1.2rem;
+        background-color: #509575;
+        border: none;
+        border-radius: 0.5rem;
         color: white;
+        font-weight: bold;
+        padding: 12px 20px;
+        margin-top: -5%;
+        margin-left: 4%;
+        box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.1),
+          0 4px 4px 0 rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+        &:hover {
+          background-color: #66ad8c;
+          color: white;
+        }
       }
     }
   }

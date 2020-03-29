@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import pageOne from "../../../assets/landingPage/homepage.svg";
 import top1 from "../../../assets/landingPage/top1.png";
 import top2 from "../../../assets/landingPage/top2.png";
