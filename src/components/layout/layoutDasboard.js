@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "../../store/actions/userAction";
 import { getCurrentUser } from "../../store/actions/customersAction";
-import { Layout, Menu, Button, Avatar, Dropdown } from "antd";
+import { Layout, Menu, Button, Dropdown } from "antd";
 import {
   UserOutlined,
   CarFilled,
