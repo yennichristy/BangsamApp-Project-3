@@ -49,8 +49,8 @@ const Dashboard = () => {
           <Col span={6}>
             <Card className="content__data__details">
               <TeamOutlined />
-              <span>Blocked Customer</span>
-              <p>100</p>
+              <span>Suspended Customer</span>
+              <p>{dashboardData && dashboardData.customer.suspended}</p>
             </Card>
           </Col>
         </Row>
@@ -59,28 +59,32 @@ const Dashboard = () => {
             <Card className="content__data__details">
               <DollarCircleFilled />
               <span>Total Deposit</span>
-              <p>100</p>
+              <p>{dashboardData && dashboardData.balance.total}</p>
             </Card>
           </Col>
           <Col span={6}>
             <Card className="content__data__details">
               <DollarCircleFilled />
               <span>Total Withdraw</span>
-              <p>100</p>
+              <p>{dashboardData && dashboardData.withdraw.total}</p>
             </Card>
           </Col>
           <Col span={6}>
             <Card className="content__data__details">
               <DollarCircleFilled />
               <span>Total Amount of Deposit</span>
-              <p>Rp {formatDigit(120000)}</p>
+              <p>
+                Rp {formatDigit(dashboardData && dashboardData.balance.amount)}
+              </p>
             </Card>
           </Col>
           <Col span={6}>
             <Card className="content__data__details">
               <DollarCircleFilled />
               <span>Total Amount of Withdrawn</span>
-              <p>Rp {formatDigit(120000)}</p>
+              <p>
+                Rp {formatDigit(dashboardData && dashboardData.withdraw.amount)}
+              </p>
             </Card>
           </Col>
         </Row>
@@ -90,13 +94,6 @@ const Dashboard = () => {
               <CarFilled />
               <span>Pick-up Request</span>
               <p>{dashboardData && dashboardData.pickups.total} requests</p>
-            </Card>
-          </Col>
-          <Col span={12}>
-            <Card className="content__data__details">
-              <BankFilled />
-              <span>Banks' Deposit</span>
-              <p>100</p>
             </Card>
           </Col>
         </Row>
