@@ -63,8 +63,11 @@ const CustomersDetails = () => {
             return (
               <>
                 <div key={singleitem._id}>
-                  {singleitem.village} {singleitem.regency}{" "}
-                  {singleitem.district} {singleitem.province}
+                  {singleitem.address_detail}
+                  {","} {singleitem.village}
+                  {","} {singleitem.regency}
+                  {","} {singleitem.district}
+                  {","} {singleitem.province}
                 </div>
                 <hr />
               </>
