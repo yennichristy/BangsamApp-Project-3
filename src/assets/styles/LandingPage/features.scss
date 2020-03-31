@@ -1,7 +1,8 @@
 .features {
   display: grid;
   grid-template-columns: repeat(15, 1fr);
-  height: 40vh;
+  min-height: 100vh;
+  padding: 100px 0 150px;
   &__decoration {
     position: absolute;
     right: 0;
@@ -13,8 +14,7 @@
   }
   &__container {
     grid-column: 2/15;
-    margin-top: 4%;
-    &__title {
+    &--title {
       text-align: center;
       font-family: "Bebas Neue", cursive;
       line-height: 1rem;
@@ -39,5 +39,47 @@
         }
       }
     }
+    &__download {
+      margin-top: 5%;
+      h2 {
+        text-align: center;
+        font-family: "Bebas Neue", cursive;
+        line-height: 1rem;
+        font-size: 4rem;
+        color: inherit;
+      }
+      p {
+        font-family: "Open Sans Condensed", sans-serif;
+        font-size: 1.5rem;
+        text-align: center;
+        line-height: 1.8rem;
+      }
+      &__android {
+        display: flex;
+        justify-content: center;
+        img {
+          max-width: 200px;
+        }
+      }
+    }
   }
+}
+
+@keyframes animateUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 50px, 0);
+    transform: translate3d(0, 50px, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animateUp {
+  -webkit-animation-name: animateUp;
+  animation-name: animateUp;
 }
