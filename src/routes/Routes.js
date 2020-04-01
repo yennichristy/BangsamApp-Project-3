@@ -14,6 +14,7 @@ import CustomersDetails from "../components/dashboardDetails/customersDetails";
 import TransactionsDetails from "../components/dashboardDetails/transactionsDetails";
 import PickupsDetails from "../components/dashboardDetails/pickupsDetails";
 import LandingPage from "../components/LandingPage/LandingPage";
+import AboutUs from "../components/LandingPage/AboutUs";
 
 const DashboardRoutes = () => {
   const token = useSelector(state => state.user.token);
@@ -59,6 +60,7 @@ const DashboardRoutes = () => {
     return (
       <div>
         <Route path="/" exact component={LandingPage} />
+        <Route path="/about-us" exact component={AboutUs} />
         <Route path="/signin" exact component={SignIn} />
         <Route path="/signup" exact component={SignUp} />
       </div>
