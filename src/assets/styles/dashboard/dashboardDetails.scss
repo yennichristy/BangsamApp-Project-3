@@ -53,3 +53,16 @@ h1.ant-typography {
   text-align: left;
   color: #30572d;
 }
+
+.ant-pagination-item:hover {
+  border-color: #30572d;
+  color: #30572d;
+}
+
+.ant-pagination-item:hover a {
+  color: #30572d;
+}
+
+.ant-pagination-item:active a {
+  color: #30572d;
+}
