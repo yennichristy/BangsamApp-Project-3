@@ -19,19 +19,23 @@ export const getAllBranches = () => async dispatch => {
   }
 };
 
-// export const deleteBranch = () => async dispatch => {
-//   const token = localStorage.getItem("token")
-//   try {
-//     const res = await fetch(`${baseUrl}/branches/{branch_id}`, {
-//       method: "DELETE",
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Bearer ${token}`,
-//         Accept: "appplication/json"
-//       }
-//     });
-//     await res.json();
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
+export const deleteBranch = branch_id => async dispatch => {
+  const token = localStorage.getItem("token");
+  try {
+    const res = await fetch(`${baseUrl}/branches/${branch_id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+        Accept: "appplication/json"
+      }
+    });
+    await res.json();
+    dispatch({
+      type: "DELETE_BRANCH",
+      payload: branch_id
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};

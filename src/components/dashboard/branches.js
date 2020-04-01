@@ -5,7 +5,10 @@ import { SearchOutlined } from "@ant-design/icons";
 import { Highlighter } from "react-highlight-words";
 import "../../assets/styles/dashboard/dashboardDetails.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllBranches } from "../../store/actions/branchesAction";
+import {
+  getAllBranches,
+  deleteBranch
+} from "../../store/actions/branchesAction";
 import moment from "moment";
 
 const Branches = () => {
@@ -224,6 +227,7 @@ const Branches = () => {
       <Title>Branches</Title>
       <div className="table">
         <Button onClick={clearAll}>Clear sorters</Button>
+        <Button onClick={() => deleteBranch(branch_id)}>Delete</Button>
       </div>
       <Table
         columns={columns}
