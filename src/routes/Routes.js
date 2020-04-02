@@ -25,7 +25,7 @@ const DashboardRoutes = () => {
       <div>
         <DashboardLayout>
           <Route path="/dashboard" exact component={Home} />
-          <Route path="/dashboard/banks" exact component={Branches} />
+          <Route path="/dashboard/branches" exact component={Branches} />
           <Route
             path="/dashboard/transactions"
             exact
