@@ -8,7 +8,6 @@ import {
   UserOutlined,
   CarFilled,
   HomeOutlined,
-  DollarCircleOutlined,
   BankOutlined,
   LogoutOutlined,
   DownOutlined
@@ -67,24 +66,18 @@ const DashboardLayout = props => {
             </Link>
           </Menu.Item>
           <Menu.Item key="2">
-            <DollarCircleOutlined />
-            <Link to={"/dashboard/transactions"}>
-              <span className="nav-text">Transactions</span>
+            <BankOutlined />
+            <Link to={"/dashboard/branches"}>
+              <span className="nav-text">Branches</span>
             </Link>
           </Menu.Item>
           <Menu.Item key="3">
-            <BankOutlined />
-            <Link to={"/dashboard/banks"}>
-              <span className="nav-text">Banks</span>
-            </Link>
-          </Menu.Item>
-          <Menu.Item key="4">
             <UserOutlined />
             <Link to={"/dashboard/customers"}>
               <span className="nav-text">Customers</span>
             </Link>
           </Menu.Item>
-          <Menu.Item key="5">
+          <Menu.Item key="4">
             <CarFilled />
             <Link to={"/dashboard/pickup-requests"}>
               <span className="nav-text">Pick-up Request</span>
