@@ -10,7 +10,7 @@ const branchesReducer = (state = initialState, action) => {
         ...state,
         branches: payload
       };
-    case "DELETE_BRANCH":
+    case "BLOCK_BRANCH":
       return {
         ...state,
         branch: state.branches.filter(item => item.id !== payload)

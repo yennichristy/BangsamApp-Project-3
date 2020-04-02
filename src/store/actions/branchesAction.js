@@ -19,8 +19,9 @@ export const getAllBranches = () => async dispatch => {
   }
 };
 
-export const deleteBranch = branch_id => async dispatch => {
+export const blockBranch = branch_id => async dispatch => {
   const token = localStorage.getItem("token");
+  console.log(branch_id);
   try {
     const res = await fetch(`${baseUrl}/branches/${branch_id}`, {
       method: "DELETE",
@@ -32,7 +33,7 @@ export const deleteBranch = branch_id => async dispatch => {
     });
     await res.json();
     dispatch({
-      type: "DELETE_BRANCH",
+      type: "BLOCK_BRANCH",
       payload: branch_id
     });
   } catch (error) {
