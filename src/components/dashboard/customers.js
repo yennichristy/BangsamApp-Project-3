@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table, Button, Spin, Typography } from "antd";
+import { Table, Spin, Typography } from "antd";
 import "../../assets/styles/dashboard/dashboardDetails.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCustomers } from "../../store/actions/customersAction";
@@ -45,9 +45,9 @@ const Customers = () => {
   };
 
   //variable for button handling
-  const clearAll = () => {
-    setSorted(null);
-  };
+  // const clearAll = () => {
+  //   setSorted(null);
+  // };
 
   //variable for data presentation
   const columns = [
@@ -125,9 +125,9 @@ const Customers = () => {
   return (
     <div>
       <Title>Customers</Title>
-      <div className="table">
+      {/* <div className="table">
         <Button onClick={clearAll}>Clear sorters</Button>
-      </div>
+      </div> */}
       <Table
         columns={columns}
         rowSelection={rowSelection}

@@ -10,6 +10,11 @@ const branchesReducer = (state = initialState, action) => {
         ...state,
         branches: payload
       };
+    case "BLOCK_BRANCH":
+      return {
+        ...state,
+        branch: state.branches.filter(item => item.id !== payload)
+      };
     default:
       return {
         ...state

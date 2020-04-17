@@ -196,9 +196,9 @@ const Branches = () => {
     setSorted(sorter);
   };
 
-  const clearAll = () => {
-    setSorted(null);
-  };
+  // const clearAll = () => {
+  //   setSorted(null);
+  // };
 
   //variable for check box selection
   const rowSelection = {
@@ -222,9 +222,9 @@ const Branches = () => {
   return (
     <div>
       <Title>Branches</Title>
-      <div className="table">
+      {/* <div className="table">
         <Button onClick={clearAll}>Clear sorters</Button>
-      </div>
+      </div> */}
       <Table
         columns={columns}
         rowSelection={rowSelection}

@@ -5,43 +5,116 @@
   &__decoration1 {
     position: absolute;
     top: 0;
+    @media only screen and (max-width: 768px) {
+      display: none;
+    }
   }
   &__decoration2 {
     position: absolute;
     right: 0;
     top: 0;
     z-index: -10;
+    @media only screen and (max-width: 768px) {
+      display: none;
+    }
   }
   &__decoration3 {
     position: absolute;
     left: 0;
     bottom: 0;
     margin-bottom: -5%;
+    @media only screen and (max-width: 768px) {
+      display: none;
+    }
   }
   &__decoration4 {
     position: absolute;
     bottom: 0;
     right: 0;
     margin-bottom: -5%;
+    @media only screen and (max-width: 768px) {
+      display: none;
+    }
+  }
+  @media only screen and (max-width: 425px) {
+    height: 80vh;
+  }
+  @media only screen and (max-width: 320px) {
+    height: 60vh;
   }
   &__left {
-    grid-column: 3/9;
+    @media only screen and (max-width: 2560px) {
+      grid-column: 2/8;
+    }
+    @media only screen and (max-width: 1863px) {
+      grid-column: 3/9;
+    }
+    @media only screen and (max-width: 768px) {
+      grid-column: 2/15;
+    }
+    @media only screen and (max-width: 425px) {
+      grid-column: 2/14;
+    }
+    @media only screen and (max-width: 375px) {
+      grid-column: 3/14;
+    }
     &__headline {
-      padding-top: 30%;
-      text-align: center;
-      margin-top: 7%;
-      margin-bottom: -3%;
-      line-height: 5rem;
       font-family: "Bebas Neue", cursive;
       color: #595959;
-      font-size: 5rem;
+      @media only screen and (max-width: 2560px) {
+        font-size: 120px;
+        line-height: 120px;
+        padding-top: 20%;
+      }
+      @media only screen and (max-width: 1863px) {
+        padding-top: 20%;
+        text-align: left;
+        margin-top: 5%;
+        margin-bottom: -3%;
+        line-height: 80px;
+        font-size: 86px;
+      }
+      @media only screen and (max-width: 1440px) {
+        font-size: 60px;
+        line-height: 60px;
+        padding-top: 20%;
+      }
+      @media only screen and (max-width: 1024px) {
+        font-size: 45px;
+        line-height: 45px;
+      }
+      @media only screen and (max-width: 768px) {
+        font-size: 70px;
+        line-height: 70px;
+        margin-top: 0%;
+        text-align: center;
+      }
+      @media only screen and (max-width: 425px) {
+        font-size: 36px;
+        line-height: 36px;
+        text-align: center;
+      }
+      @media only screen and (max-width: 375px) {
+        font-size: 30px;
+        line-height: 30px;
+        text-align: center;
+      }
+      @media only screen and (max-width: 320px) {
+        font-size: 25px;
+        line-height: 30px;
+        text-align: center;
+      }
     }
     &__button {
       display: flex;
+      justify-content: left;
       max-height: 20px;
+      @media only screen and (max-width: 768px) {
+        justify-content: center;
+      }
       button {
         font-family: "Open Sans Condensed", sans-serif;
-        font-size: 1.2rem;
+        font-size: 19.2px;
         background-color: #509575;
         border: none;
         border-radius: 0.5rem;
@@ -49,7 +122,6 @@
         font-weight: bold;
         padding: 12px 20px;
         margin-top: -5%;
-        margin-left: 4%;
         box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.1),
           0 4px 4px 0 rgba(0, 0, 0, 0.15);
         cursor: pointer;
@@ -57,16 +129,95 @@
           background-color: #66ad8c;
           color: white;
         }
+        @media only screen and (max-width: 2560px) {
+          font-size: 28px;
+          padding: 12px 20px;
+        }
+        @media only screen and (max-width: 1863px) {
+          font-size: 19.2px;
+          padding: 12px 20px;
+        }
+        @media only screen and (max-width: 1440px) {
+          font-size: 22px;
+          padding: 5px 20px;
+        }
+        @media only screen and (max-width: 1024px) {
+          font-size: 16px;
+          padding: 5px 20px;
+        }
+        @media only screen and (max-width: 425px) {
+          font-size: 12px;
+          padding: 7px 12px;
+        }
+        @media only screen and (max-width: 375px) {
+          font-size: 10px;
+          padding: 6px 8px;
+        }
       }
     }
   }
   &__right {
     grid-column: 10/15;
-    padding-top: 20%;
+    padding-top: 5%;
     padding-right: 20%;
     margin-left: -10%;
+    @media only screen and (max-width: 2560px) {
+      padding-top: 0%;
+      grid-column: 10/15;
+    }
+    @media only screen and (max-width: 1440px) {
+      padding-top: 0%;
+      grid-column: 10/15;
+    }
+    @media only screen and (max-width: 1024px) {
+      padding-top: 0%;
+      grid-column: 10/15;
+    }
+    @media only screen and (max-width: 768px) {
+      padding-top: 5%;
+      grid-column: 4/15;
+    }
+    @media only screen and (max-width: 375px) {
+      padding-top: 0%;
+    }
     &__picture {
-      height: 70%;
+      @media only screen and (max-width: 2560px) {
+        width: 120%;
+      }
+      @media only screen and (max-width: 1440px) {
+        width: 120%;
+      }
+      @media only screen and (max-width: 1024px) {
+        width: 120%;
+      }
+      @media only screen and (max-width: 768px) {
+        width: 80%;
+      }
+      @media only screen and (max-width: 425px) {
+        height: 80%;
+      }
+      @media only screen and (max-width: 375px) {
+        height: 88%;
+      }
     }
   }
+}
+
+@keyframes animateUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 50px, 0);
+    transform: translate3d(0, 50px, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animateUp {
+  -webkit-animation-name: animateUp;
+  animation-name: animateUp;
 }

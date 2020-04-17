@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+// import { blockBranch } from "../../store/actions/branchesAction";
 import { Descriptions, Badge, Spin } from "antd";
 import "../../assets/styles/dashboard/details.scss";
 import { getAllBranches } from "../../store/actions/branchesAction";
@@ -11,6 +12,7 @@ const BranchesDetails = () => {
   const dispatch = useDispatch();
   const branchesDetails = useSelector(state => state.branches.branches);
   const param = useParams();
+  // const history = useHistory();
 
   //use effect for dispatch data from redux
   useEffect(() => {
@@ -22,6 +24,13 @@ const BranchesDetails = () => {
 
   //condition if the main data is not loaded
   if (!branchDetail) return <Spin size="large" tip="Loading..." />;
+
+  //variable for block status
+  // const block = async id => {
+  //   console.log("id", id);
+  //   await dispatch(blockBranch(id));
+  //   history.push("/dashboard/banks");
+  // };
 
   //variable destructure data
   const {
@@ -62,6 +71,7 @@ const BranchesDetails = () => {
           )}
         </Descriptions.Item>
       </Descriptions>
+      {/* <Button onClick={() => block(branchDetail._id)}>Block Bank</Button> */}
     </div>
   );
 };

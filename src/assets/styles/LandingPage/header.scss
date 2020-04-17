@@ -15,11 +15,40 @@
     grid-column: 12/15;
     margin-top: 15px;
     margin-bottom: 15px;
-    button {
+    @media only screen and (max-width: 2560px) {
+      grid-column: 12/15;
+    }
+    @media only screen and (max-width: 1440px) {
+      grid-column: 11/15;
+    }
+    @media only screen and (max-width: 1024px) {
+      grid-column: 10/15;
+    }
+    @media only screen and (max-width: 768px) {
+      grid-column: 9/15;
+    }
+    @media only screen and (max-width: 425px) {
+      grid-column: 2/15;
+    }
+    @media only screen and (max-width: 320px) {
+      grid-column: 1/15;
+    }
+    &__btn {
       margin-left: 20px;
       border: none;
       font-size: 20px;
       background-color: transparent;
+      box-shadow: none;
+      @media only screen and (min-width: 2560px) {
+        font-size: 30px;
+      }
+      :hover {
+        background-color: transparent;
+      }
     }
   }
+}
+
+.ant-btn:hover {
+  background: transparent;
 }

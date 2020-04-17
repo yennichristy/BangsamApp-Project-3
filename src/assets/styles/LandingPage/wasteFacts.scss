@@ -1,16 +1,35 @@
 .waste-facts {
   background-color: #d8ead7;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
-  padding-right: 7%;
-  padding-left: 7%;
+  padding: 100px 0 150px;
+  @media only screen and (max-width: 1863px) {
+    padding: 100px 0 150px;
+  }
+  @media only screen and (max-width: 1440px) {
+    padding: 80px 0 150px;
+  }
+  @media only screen and (max-width: 425px) {
+    padding: 20px 0 100px;
+  }
   &__title {
-    font-size: 4rem;
     text-align: center;
+    font-size: 64px;
     font-family: "Bebas Neue", cursive;
-    margin-top: 2%;
     h1 {
       color: #2d462cef;
+    }
+    @media only screen and (max-width: 2560px) {
+      font-size: 80px;
+    }
+    @media only screen and (max-width: 1863px) {
+      font-size: 64px;
+    }
+    @media only screen and (max-width: 768px) {
+      font-size: 50px;
+    }
+    @media only screen and (max-width: 425px) {
+      font-size: 24px;
     }
   }
   &__cards-container {
@@ -21,32 +40,141 @@
     :hover {
       transform: rotate(3deg);
     }
+    @media only screen and (max-width: 2560px) {
+      margin-top: -3%;
+    }
+    @media only screen and (max-width: 768px) {
+      flex-direction: column;
+    }
     &__series {
       box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.1),
         0 4px 4px 0 rgba(0, 0, 0, 0.15);
-      border-radius: 1rem;
-      margin-left: 2rem;
+      border-radius: 16px;
+      margin-left: 32px;
       background-color: white;
-      max-width: 25rem;
+      transition: all 0.3s ease;
+      @media only screen and (max-width: 2560px) {
+        max-width: 600px;
+      }
+      @media only screen and (max-width: 1863px) {
+        max-width: 400px;
+      }
+      @media only screen and (max-width: 1024px) {
+        max-width: 250px;
+      }
+      @media only screen and (max-width: 768px) {
+        max-width: 700px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      @media only screen and (max-width: 425px) {
+        max-width: 250px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 85px;
+      }
+      @media only screen and (max-width: 375px) {
+        margin-left: 60px;
+      }
+      @media only screen and (max-width: 320px) {
+        margin-left: 32px;
+      }
       &__head {
-        font-size: 2rem;
         font-weight: bold;
         text-align: center;
         color: #2d462c;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
+        margin-top: 16px;
+        margin-bottom: 16px;
+        @media only screen and (max-width: 2560px) {
+          font-size: 40px;
+        }
+        @media only screen and (max-width: 1863px) {
+          font-size: 32px;
+        }
+        @media only screen and (max-width: 1024px) {
+          font-size: 28px;
+        }
+        @media only screen and (max-width: 768px) {
+          text-align: center;
+          display: grid;
+          grid-template-columns: repeat(6, 1fr);
+          p {
+            grid-column: 1/7;
+            margin-bottom: 0px;
+          }
+        }
+        @media only screen and (max-width: 425px) {
+          font-size: 20px;
+        }
         &__image {
-          margin: 1rem;
-          max-width: 15rem;
-          max-height: 10rem;
+          margin: 16px;
+          max-width: 240px;
+          max-height: 160px;
+          @media only screen and (max-width: 1024px) {
+            max-width: 200px;
+            max-height: 100px;
+          }
+          @media only screen and (max-width: 768px) {
+            position: absolute;
+            left: 0;
+            grid-column: 1/4;
+            max-width: 250px;
+            max-height: 100px;
+          }
+          @media only screen and (max-width: 425px) {
+            display: none;
+          }
         }
       }
       &__content {
-        font-size: 1.3rem;
+        font-size: 20.8px;
         text-align: justify;
-        padding: 1rem;
+        padding: 16px;
         color: rgb(31, 28, 28);
+        @media only screen and (max-width: 2560px) {
+          font-size: 32px;
+        }
+        @media only screen and (max-width: 1863px) {
+          font-size: 20.8px;
+        }
+        @media only screen and (max-width: 1440px) {
+          font-size: 20.8px;
+        }
+        @media only screen and (max-width: 1024px) {
+          font-size: 18px;
+        }
+        @media only screen and (max-width: 768px) {
+          display: grid;
+          grid-template-columns: repeat(6, 1fr);
+          p {
+            grid-column: 3/7;
+          }
+        }
+        @media only screen and (max-width: 425px) {
+          p {
+            grid-column: 1/7;
+          }
+        }
       }
     }
   }
+}
+
+@keyframes animateUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 50px, 0);
+    transform: translate3d(0, 50px, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animateUp {
+  -webkit-animation-name: animateUp;
+  animation-name: animateUp;
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Table, Button, Typography, Spin } from "antd";
+import { Table, Typography, Spin } from "antd";
 import "../../assets/styles/dashboard/dashboardDetails.scss";
 import { getAllPickup } from "../../store/actions/pickupAction";
 
@@ -42,9 +42,9 @@ const Pickup = () => {
     setSorted(sorter);
   };
 
-  const clearAll = () => {
-    setSorted(null);
-  };
+  // const clearAll = () => {
+  //   setSorted(null);
+  // };
 
   //variable for data presentation
   const columns = [
@@ -112,9 +112,9 @@ const Pickup = () => {
   return (
     <div>
       <Title>Pick-up Requests</Title>
-      <div className="table">
+      {/* <div className="table">
         <Button onClick={clearAll}>Clear sorters</Button>
-      </div>
+      </div> */}
       <Table
         columns={columns}
         rowSelection={rowSelection}
