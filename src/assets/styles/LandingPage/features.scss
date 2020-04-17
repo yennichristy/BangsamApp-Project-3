@@ -1,0 +1,181 @@
+.features {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  padding: 100px 0 150px;
+  &__decoration {
+    position: absolute;
+    right: 0;
+
+    @media only screen and (max-width: 1024px) {
+      margin-top: 30%;
+    }
+    @media only screen and (max-width: 768px) {
+      margin-top: 50%;
+      display: none;
+    }
+  }
+  &__decoration2 {
+    position: absolute;
+    margin-top: -1%;
+    @media only screen and (max-width: 1024px) {
+      display: none;
+    }
+  }
+  &__container {
+    grid-column: 2/15;
+    &--title {
+      text-align: center;
+      font-family: "Bebas Neue", cursive;
+      line-height: 16px;
+      @media only screen and (max-width: 2560px) {
+        font-size: 100px;
+      }
+      @media only screen and (max-width: 1863px) {
+        font-size: 64px;
+      }
+      @media only screen and (max-width: 425px) {
+        font-size: 38px;
+      }
+      @media only screen and (max-width: 320px) {
+        font-size: 30px;
+      }
+    }
+    &__items {
+      display: flex;
+      justify-content: center;
+      @media only screen and (max-width: 425px) {
+        display: flex;
+        flex-direction: column;
+      }
+      &__detail {
+        margin-left: 48px;
+        img {
+          margin-left: 32px;
+          margin-right: 32px;
+          @media only screen and (max-width: 2560px) {
+            width: 200px;
+          }
+          @media only screen and (max-width: 1863px) {
+            width: 128px;
+          }
+          @media only screen and (max-width: 1024px) {
+            width: 100px;
+          }
+          @media only screen and (max-width: 768px) {
+            width: 80px;
+            margin-left: 20px;
+            margin-right: 20px;
+          }
+          @media only screen and (max-width: 425px) {
+            width: 50px;
+          }
+        }
+        p {
+          font-family: "Open Sans Condensed", sans-serif;
+          font-weight: bold;
+          text-align: center;
+          line-height: 28.8px;
+          @media only screen and (max-width: 2560px) {
+            font-size: 32px;
+          }
+          @media only screen and (max-width: 1863px) {
+            font-size: 24px;
+          }
+          @media only screen and (max-width: 425px) {
+            font-size: 16px;
+            text-align: left;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            margin-top: -40px;
+            margin-left: 80px;
+          }
+          @media only screen and (max-width: 320px) {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+    &__download {
+      margin-top: 5%;
+      @media only screen and (max-width: 1024px) {
+        margin-top: 10%;
+      }
+      h2 {
+        text-align: center;
+        font-family: "Bebas Neue", cursive;
+        line-height: 16px;
+        color: inherit;
+        @media only screen and (max-width: 2560px) {
+          font-size: 100px;
+        }
+        @media only screen and (max-width: 1863px) {
+          font-size: 64px;
+        }
+        @media only screen and (max-width: 425px) {
+          font-size: 38px;
+        }
+        @media only screen and (max-width: 320px) {
+          font-size: 30px;
+        }
+      }
+      p {
+        font-family: "Open Sans Condensed", sans-serif;
+        text-align: center;
+        line-height: 28.8px;
+        @media only screen and (max-width: 2560px) {
+          font-size: 32px;
+        }
+        @media only screen and (max-width: 1863px) {
+          font-size: 24px;
+        }
+        @media only screen and (max-width: 425px) {
+          font-size: 16px;
+        }
+        @media only screen and (max-width: 320px) {
+          font-size: 10px;
+        }
+      }
+      &__android {
+        display: flex;
+        justify-content: center;
+        img {
+          @media only screen and (max-width: 2560px) {
+            max-width: 300px;
+          }
+          @media only screen and (max-width: 1863px) {
+            max-width: 200px;
+          }
+          @media only screen and (max-width: 1024px) {
+            max-width: 150px;
+          }
+          @media only screen and (max-width: 425px) {
+            max-width: 120px;
+          }
+          @media only screen and (max-width: 320px) {
+            max-width: 90px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes animateUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 50px, 0);
+    transform: translate3d(0, 50px, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animateUp {
+  -webkit-animation-name: animateUp;
+  animation-name: animateUp;
+}
