@@ -1,23 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Input, Button, Checkbox, Typography } from "antd";
 import { LockOutlined, PhoneOutlined } from "@ant-design/icons";
 import Logo from "../../assets/icons/logo-items/bangsam.png";
 import "../../assets/styles/users.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { signIn } from "../../store/actions/userAction";
+import { signIn, clear } from "../../store/actions/userAction";
 
 const { Title } = Typography;
 
 const Users = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const { user, error } = useSelector((state) => state.user);
 
-  const onFinish = values => {
-    console.log("Received values of form: ", values);
+  const [loading, setLoading] = useState(false);
+
+  const onFinish = (values) => {
+    if (error !== null) {
+      dispatch(clear());
+    }
     dispatch(signIn(values));
-    history.push("/dashboard");
+    setLoading(true);
   };
+
+  useEffect(() => {
+    if (user !== null) {
+      history.push("/dashboard");
+    }
+    if (error !== null) {
+      setLoading(false);
+    }
+  }, [user, error]);
 
   return (
     <div className="users">
@@ -25,7 +39,7 @@ const Users = () => {
         name="normal_login"
         className="login-form"
         initialValues={{
-          remember: true
+          remember: true,
         }}
         onFinish={onFinish}
       >
@@ -37,8 +51,8 @@ const Users = () => {
           rules={[
             {
               required: true,
-              message: "Please input your email!"
-            }
+              message: "Please input your email!",
+            },
           ]}
         >
           <Input
@@ -51,8 +65,8 @@ const Users = () => {
           rules={[
             {
               required: true,
-              message: "Please input your password!"
-            }
+              message: "Please input your password!",
+            },
           ]}
         >
           <Input
@@ -67,12 +81,15 @@ const Users = () => {
           </Form.Item>
           <p className="login-form-forgot">Forgot password</p>
         </Form.Item>
-
         <Form.Item>
+          {error !== null && (
+            <p className="login-form-error">{error} Please try again.</p>
+          )}
           <Button
             type="primary"
             htmlType="submit"
             className="login-form-button"
+            loading={loading}
           >
             Sign in
           </Button>

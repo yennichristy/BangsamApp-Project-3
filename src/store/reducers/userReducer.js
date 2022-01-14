@@ -1,7 +1,7 @@
 const initialState = {
   token: localStorage.getItem("token"),
   user: null,
-  error: null
+  error: null,
 };
 
 const userReducer = (state = initialState, action) => {
@@ -11,18 +11,24 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         token: payload,
-        user: payload.user
+        user: payload.user,
       };
     case "FAILED":
       return {
         ...state,
-        error: payload.error
+        error: payload,
+      };
+    case "CLEAR":
+      return {
+        ...state,
+        user: null,
+        error: null,
       };
     case "SIGN_OUT":
       localStorage.removeItem("token");
       return {
         ...state,
-        token: null
+        token: null,
       };
     default:
       return { ...state };
