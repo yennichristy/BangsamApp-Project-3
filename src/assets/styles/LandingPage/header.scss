@@ -15,6 +15,15 @@
     grid-column: 11/15;
     margin-top: 15px;
     margin-bottom: 15px;
+    .ant-btn-primary {
+      background-color: #457c3bde;
+      border-color: #457c3bde;
+    }
+    .ant-btn-primary:hover {
+      background-color: #64b15d;
+      border-color: #64b15d;
+      color: white;
+    }
     .ant-btn:active,
     .ant-btn:focus {
       color: rgba(0, 0, 0, 0.85);

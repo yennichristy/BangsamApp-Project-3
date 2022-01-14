@@ -37,6 +37,7 @@ const HeaderLayout = () => {
         <Button
           className="header__navbar__btn"
           onClick={() => history.push("/signin")}
+          type="primary"
         >
           LOGIN
         </Button>
