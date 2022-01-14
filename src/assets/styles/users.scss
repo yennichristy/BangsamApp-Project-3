@@ -51,6 +51,9 @@
   width: 100%;
   margin-bottom: 5%;
 }
+.login-form-error {
+  color: #eb0303;
+}
 
 .ant-btn-primary {
   background-color: #457c3bde;
@@ -60,6 +63,13 @@
 .ant-btn-primary:hover {
   background-color: #64b15d;
   border-color: #64b15d;
+  color: white;
+}
+
+.ant-btn-primary:focus,
+.ant-btn-primary:active {
+  background-color: #457c3bde;
+  border-color: #457c3bde;
   color: white;
 }
 

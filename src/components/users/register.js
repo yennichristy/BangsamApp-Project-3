@@ -1,15 +1,16 @@
-import React from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect } from "react";
 import { Form, Input, Button, Typography } from "antd";
 import {
   MailOutlined,
   UserOutlined,
   LockOutlined,
-  PhoneOutlined
+  PhoneOutlined,
 } from "@ant-design/icons";
 import Logo from "../../assets/icons/logo-items/bangsam.png";
 import "../../assets/styles/users.scss";
-import { useDispatch } from "react-redux";
-import { register } from "../../store/actions/userAction";
+import { useDispatch, useSelector } from "react-redux";
+import { register, clear } from "../../store/actions/userAction";
 import { useHistory } from "react-router-dom";
 
 const { Title } = Typography;
@@ -17,14 +18,26 @@ const { Title } = Typography;
 const Register = () => {
   //connect dari reducer
   const dispatch = useDispatch();
-
   const history = useHistory();
+  const { user, error } = useSelector((state) => state.user);
+  const [loading, setLoading] = useState(false);
 
-  const onFinish = values => {
-    console.log("Received values of form: ", values);
+  const onFinish = (values) => {
+    if (error !== null) {
+      dispatch(clear());
+    }
     dispatch(register(values));
-    history.push("/dashboard");
+    setLoading(true);
   };
+
+  useEffect(() => {
+    if (user !== null) {
+      history.push("/dashboard");
+    }
+    if (error !== null) {
+      setLoading(false);
+    }
+  }, [user, error]);
 
   return (
     <div className="users">
@@ -32,7 +45,7 @@ const Register = () => {
         name="register"
         className="login-form"
         initialValues={{
-          remember: true
+          remember: true,
         }}
         onFinish={onFinish}
       >
@@ -44,8 +57,8 @@ const Register = () => {
           rules={[
             {
               required: true,
-              message: "Please input your name!"
-            }
+              message: "Please input your name!",
+            },
           ]}
         >
           <Input
@@ -58,8 +71,8 @@ const Register = () => {
           rules={[
             {
               required: true,
-              message: "Please input your email!"
-            }
+              message: "Please input your email!",
+            },
           ]}
         >
           <Input
@@ -72,8 +85,8 @@ const Register = () => {
           rules={[
             {
               required: true,
-              message: "Please input your phone number!"
-            }
+              message: "Please input your phone number!",
+            },
           ]}
         >
           <Input
@@ -86,8 +99,8 @@ const Register = () => {
           rules={[
             {
               required: true,
-              message: "Please input your password!"
-            }
+              message: "Please input your password!",
+            },
           ]}
         >
           <Input
@@ -102,7 +115,7 @@ const Register = () => {
           rules={[
             {
               required: true,
-              message: "Please confirm your password!"
+              message: "Please confirm your password!",
             },
             ({ getFieldValue }) => ({
               validator(rule, value) {
@@ -112,8 +125,8 @@ const Register = () => {
                 return Promise.reject(
                   "The two passwords that you entered do not match!"
                 );
-              }
-            })
+              },
+            }),
           ]}
         >
           <Input
@@ -123,10 +136,14 @@ const Register = () => {
           />
         </Form.Item>
         <Form.Item>
+          {error !== null && (
+            <p className="login-form-error">{error} Please try again.</p>
+          )}
           <Button
             type="primary"
             htmlType="submit"
             className="login-form-button"
+            loading={loading}
           >
             Sign up
           </Button>
